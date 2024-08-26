@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="KFC.Model.Application">
+    <Position X="1" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAQQQABABEAAACBABAgAAAAQUAAAAAAgAAk=</HashCode>
+      <FileName>Application.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="current_game" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="KFC.Model.GameEventArgs">
+    <Position X="9.5" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEACA=</HashCode>
+      <FileName>GameEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.Model.GameModel">
+    <Position X="16.5" Y="0.75" Width="4" />
+    <AssociationLine Name="map" Type="KFC.Model.Tile">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.135" Y="0.091" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="road_network" Type="KFC.Model.Road.RoadNetwork" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.5" Y="22.5" />
+        <Point X="16.319" Y="22.5" />
+        <Point X="16.319" Y="22.499" />
+        <Point X="1.25" Y="22.499" />
+        <Point X="1.25" Y="20.209" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-2.405" Y="0.181" Height="0.182" Width="2.306" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="pipe_network" Type="KFC.Model.Pipe.PipeNetwork" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.5" Y="22.248" />
+        <Point X="5.688" Y="22.248" />
+        <Point X="5.688" Y="20.978" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="monthly_log" Type="KFC.Model.Logging.MonthlyLog" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.5" Y="0.75" />
+        <Point X="18.5" Y="0.375" />
+        <Point X="16.125" Y="0.375" />
+        <Point X="16.125" Y="4.25" />
+        <Point X="12.25" Y="4.25" />
+        <Point X="12.25" Y="10.087" />
+        <Point X="10.062" Y="10.087" />
+        <Point X="10.062" Y="10.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>NUIRsUgd+AgMAQQDCDExUQQAQS8AbBJkihyAGQ5x2jM=</HashCode>
+      <FileName>GameModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="map" />
+      <Property Name="road_network" />
+      <Property Name="pipe_network" />
+      <Property Name="spending_log" />
+      <Property Name="monthly_log" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="KFC.Model.Buildings.CityHall" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="9.75" Width="3.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.196" />
+  </Class>
+  <Class Name="KFC.Model.Buildings.OxygenDiffuser" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="14.25" Width="3.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KFC.Model.Buildings.OxygenGenerator" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="14.25" Width="3.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KFC.Model.Buildings.Park" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="18.5" Width="3.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KFC.Model.Buildings.PoliceStation" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="18.5" Width="3.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KFC.Model.Logging.SpendingInfo">
+    <Position X="7.75" Y="7.75" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Person.Person">
+    <Position X="0.5" Y="7.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Pipe.PipeNetwork">
+    <Position X="4.25" Y="17.5" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Pipe.PipeNetworkNode">
+    <Position X="4.25" Y="14.75" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Road.RoadNetwork">
+    <Position X="0.5" Y="17.5" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Road.RoadNetworkNode">
+    <Position X="0.5" Y="14.5" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Zones.ZoneInfo">
+    <Position X="0.5" Y="10.25" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Tile">
+    <Position X="2.75" Y="5.75" Width="2.5" />
+    <AssociationLine Name="road" Type="KFC.Model.Road.RoadNetworkNode">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.088" Y="-0.265" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Field Name="zone_info" />
+      <Field Name="building" />
+      <Field Name="road" />
+      <Field Name="pipe" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="KFC.Model.Buildings.BuildingType">
+    <Position X="12.5" Y="4.5" Width="3.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Buildings.SubBuildingPositionType">
+    <Position X="12.5" Y="6.75" Width="3.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Zones.ZoneType">
+    <Position X="4.25" Y="10.25" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="KFC.Model.Logging.MonthlyLog">
+    <Position X="9" Y="10.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="KFC.Model.Buildings.IBuilding">
+    <Position X="7.25" Y="4.25" Width="3.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="KFC.Model.EventStatus">
+    <Position X="7.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACBAAAAAAACAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KFC.Model.EventUpdate">
+    <Position X="12.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="KFC.Controls.PopUp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:kfctrl="clr-namespace:KFC.Controls"
+             x:Name="_popup">
+  <Grid>
+    <Border Height="70"
+            Background="#a000"
+            CornerRadius="15"
+            Padding="15">
+
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="{Binding PopUpMessage, ElementName=_popup}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Foreground="{Binding PopUpTextColor, ElementName=_popup}"
+                   FontSize="20"/>
+
+        <kfctrl:MenuButtonImage ImageSource="../Resources/b_quit.png"
+                                Height="40"
+                                Width="40"
+                                Grid.Column="1"
+                                Margin="30,0,0,0"/>
+
+      </Grid>
+
+
+    </Border>
+  </Grid>
+</UserControl>

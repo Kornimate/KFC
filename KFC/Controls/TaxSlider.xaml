@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="KFC.Controls.TaxSlider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="_taxSlider">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.Resources>
+      <Style TargetType="Rectangle">
+        <Setter Property="Fill" Value="White"/>
+        <Setter Property="RadiusX" Value="1.5"/>
+        <Setter Property="RadiusY" Value="1.5"/>
+        <Setter Property="Height" Value="3"/>
+        <Setter Property="Width" Value="3"/>
+      </Style>
+    </Grid.Resources>
+
+    <Border Grid.Column="1"
+      Grid.Row="1"   
+      Padding="3,0"
+      Margin="0"
+      CornerRadius="0,5,0,5"
+      Background="#7000">
+      
+      <TextBlock x:Name="_text"
+        Text="{Binding Label, ElementName=_taxSlider}"
+        Foreground="White" IsHitTestVisible="False"/>
+    </Border>
+    
+    <Rectangle Grid.ColumnSpan="2"
+      Width="30"
+      Margin="0,2,0,0"
+      HorizontalAlignment="Left"/>
+
+    <Rectangle Grid.ColumnSpan="2"
+      Grid.Column="1"
+      Grid.Row="2"
+      Width="30"
+      Margin="0,0,0,2"
+      HorizontalAlignment="Right"/>
+
+    <Rectangle Grid.RowSpan="2"
+      Height="15"
+      Margin="2,0,0,0"
+      VerticalAlignment="Top"/>
+
+    <Rectangle Grid.RowSpan="2"
+      Grid.Row="1"
+      Grid.Column="2"
+      Height="15"
+      Margin="0,0,2,0"
+      VerticalAlignment="Bottom"/>
+
+    <Slider x:Name="_slider"
+      Style="{DynamicResource TaxSliderStyle}"        
+      Grid.Row="4"
+      Grid.ColumnSpan="4"
+      Margin="0,-3,0,0"
+      Maximum="100"
+      Minimum="0"
+      Opacity="0.5"
+      Value="{Binding Value, ElementName=_taxSlider}"
+      AutoToolTipPlacement="BottomRight"
+      IsSnapToTickEnabled="True"
+      TickFrequency="1"/>
+
+    <Grid.Triggers>
+      <EventTrigger RoutedEvent="MouseEnter">
+        <EventTrigger.Actions>
+          <BeginStoryboard>
+            <Storyboard>
+
+              <DoubleAnimation Storyboard.TargetName="_slider"
+                Storyboard.TargetProperty="Opacity"
+                To="1" Duration="0:0:0.1"/>
+
+              <ColorAnimation Storyboard.TargetName="_text"
+                Storyboard.TargetProperty="Foreground.Color"
+                To="Aqua" Duration="0:0:0.1"/>
+
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger.Actions>
+      </EventTrigger>
+
+      <EventTrigger RoutedEvent="MouseLeave">
+        <EventTrigger.Actions>
+          <BeginStoryboard>
+            <Storyboard>
+
+              <DoubleAnimation Storyboard.TargetName="_slider"
+                Storyboard.TargetProperty="Opacity"
+                To="0.5" Duration="0:0:0.1"/>
+
+              <ColorAnimation Storyboard.TargetName="_text"
+                Storyboard.TargetProperty="Foreground.Color"
+                To="White" Duration="0:0:0.1"/>
+
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger.Actions>
+      </EventTrigger>
+    </Grid.Triggers>
+
+    <Grid.Effect>
+      <DropShadowEffect BlurRadius="2" ShadowDepth="4" Color="Black"/>
+    </Grid.Effect>
+
+  </Grid>
+
+</UserControl>

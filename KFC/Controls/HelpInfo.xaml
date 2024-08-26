@@ -1,0 +1,551 @@
+﻿<UserControl x:Class="KFC.Controls.HelpInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Foreground="White">
+    <Grid>
+        <StackPanel  Margin="20,20,20,20">
+            <!-- #region Intro -->
+
+            <TextBlock Margin="10,10,10,0" TextAlignment="Center" TextWrapping="Wrap" FontSize="28">
+                    <Run Text="Welcome to the"/>
+                    <Run FontWeight="Bold" Foreground="red" Text="KFCity"/>
+                    <Run Text="helpdesk! Let us go over the main game mechanics!"/>
+            </TextBlock>
+
+            <!-- #endregion -->
+
+            <!-- #region City Hall -->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,5" TextWrapping="Wrap">
+                    <Run Foreground="Red" Text="City Hall"/>
+            </TextBlock>
+
+            <TextBlock Margin="20,5,0,0" TextWrapping="Wrap" FontSize="25">
+                    <Run Text="Make sure to place the"/>
+                    <Run FontWeight="Bold" Foreground="red" Text="City Hall"/>
+                    <Run Text="so you get some starting"/>
+                    <Run Foreground="Yellow" Text="colonists!"/>
+                    <Run Text="No new"/>
+                    <Run Foreground="Yellow" Text="colonists"/>
+                    <Run Text="will move in before all of them moved out of the"/>
+                    <Run FontWeight="Bold" Foreground="red" Text="City Hall!"/>
+            </TextBlock>
+
+            <TextBlock Margin="20,5,0,0" TextWrapping="Wrap" FontSize="25">
+                    <Run Text="You can also"/>
+                    <Run FontWeight="Bold" Foreground="Khaki" Text="upgrade"/>
+                    <Run Text="the"/>
+                    <Run FontWeight="Bold" Foreground="red" Text="City Hall."/>
+                    <Run Text="This grants colony-wide bonuses and allows you to"/>
+                    <Run FontWeight="Bold" Foreground="Khaki" Text="upgrade"/>
+                    <Run Text="zones.">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+            </TextBlock>
+
+            <!-- #endregion -->
+
+            <!-- #region Zones -->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,5" TextWrapping="Wrap">
+                    <Run Text="Zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+            </TextBlock>
+
+            <TextBlock Margin="20, 0, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="The locations your colonists can live and work at, you can place them via"/>
+                    <Run FontStyle="Italic" Text="selection."/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 0, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="1."/> <Run Foreground="Lime" Text="Residential Zone:"/>
+                    <Run Text="the place your colonists can build their habitats"/>
+                    <LineBreak/>
+                    <Run Text="2."/> <Run Foreground="Blue" Text="Service Zone:"/>
+                    <Run Text="the place your colonists can work non physical jobs"/>
+                    <LineBreak/>
+                    <Run Text="3."/> <Run Foreground="Gray" Text="Industrial Zone:"/>
+                    <Run Text="the place your colonists can work physical jobs"/>
+            </TextBlock>
+
+            <TextBlock Margin="20, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="Your colonists will automatically build on"/>
+                    <Run FontWeight="Bold" Text="zones"/>
+                    <Run Text="if:"/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 0, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="@ There is a nearby workspace for them"/>
+                    <LineBreak/>
+                    <Run Text="@ Both their workplace and livingplace have"/>
+                    <Run FontWeight="Bold" Foreground="Turquoise" Text="oxygen"/>
+            </TextBlock>
+
+            <TextBlock Margin="20,5,0,0" TextWrapping="Wrap" FontSize="25">
+                    <Run Text="You can also"/>
+                    <Run FontWeight="Bold" Foreground="Khaki" Text="upgrade"/>
+                    <Run Text="zones.">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <Run Text="This boosts their capacity and makes them look prettier."/>
+            </TextBlock>
+
+            <!-- #endregion -->
+
+            <!-- #region Oxygen -->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,5" TextWrapping="Wrap">
+                    <Run Foreground="Turquoise" Text="Oxygen"/>
+            </TextBlock>
+
+            <TextBlock Margin="20, 0, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="Every building and zone in your colony needs"/>
+                    <Run FontWeight="Bold" Foreground="Turquoise" Text="oxygen."/>
+                    <Run Text="If you do not provide enough:"/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="@"/>
+                    <Run Foreground="Magenta" Text="Buildings"/>
+                    <Run Text="will not provide their full bonuses"/>
+                    <LineBreak/>
+                
+                    <Run Text="@"/>
+                    <Run Text="Zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <Run Text="can not be filled to their capacity"/>
+                    <LineBreak/>
+                    <Run Text="@"/>
+                    <Run FontWeight="Bold" Foreground="Orange" Text="Satisfaction"/>
+                    <Run Text="will drop in affected"/>
+                    <Run Text="zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+            </TextBlock>
+
+            <TextBlock Margin="20, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="You can provide"/>
+                    <Run FontWeight="Bold" Foreground="Turquoise" Text="oxygen"/>
+                    <Run Text="to tiles by placing"/>
+                    <Run FontWeight="Bold" Foreground="Turquoise" Text="oxygen diffusers"/>
+                    <Run Text="near"/>
+                    <Run Text="zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <Run Text="and"/>
+                    <Run Foreground="Magenta" Text="buildings"/><!--
+                    --><Run Text=", and connect them to"/>
+                    <Run FontWeight="Bold" Foreground="Turquoise" Text="oxygen generators"/>
+                    <Run Text="via"/>
+                    <Run FontWeight="Bold" Foreground="Turquoise" Text="pipes"/><!--
+                    --><Run Text=", which are below the ground, so they will not block anything."/>
+            </TextBlock>
+
+            <!-- #endregion -->
+
+            <!-- #region Buildings -->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,5" TextWrapping="Wrap">
+                    <Run Foreground="Magenta" Text="Buildings"/>
+            </TextBlock>
+
+            <TextBlock Margin="20, 0, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="Buildings provide special"/>
+                    <Run FontWeight="Bold" Text="bonuses."/>
+                    <Run Text="They can also be"/>
+                    <Run FontWeight="Bold" Text="larger"/>
+                    <Run Text="than 1 tile."/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="@"/>
+                    <Run Foreground="Red" Text="City Hall:"/>
+                    <Run Text="your first building, refer to the"/>
+                    <Run Foreground="Red" Text="City Hall"/>
+                    <Run Text="section"/>
+                    <LineBreak/>
+                
+                    <Run Text="@"/>
+                    <Run Foreground="Orange" Text="Park:"/>
+                    <Run Text="increases"/>
+                    <Run Foreground="Orange" Text="satisfaction"/>
+                    <Run Text="for nearby [radius of 5]"/>
+                    <Run Text="zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <LineBreak/>
+                
+                    <Run Text="@"/>
+                    <Run Foreground="Orange" Text="Police station:"/>
+                    <Run Text="provides"/>
+                    <Run Foreground="Orange" Text="safety"/>
+                    <Run Text="for nearby [radius of 5]"/>
+                    <Run Text="zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <Run Text="which increases"/>
+                    <Run Foreground="Orange" Text="satisfaction"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@"/>
+                    <Run Foreground="Turquoise" Text="Oxygen generator:"/>
+                    <Run Text="produces"/>
+                    <Run Foreground="Turquoise" Text="oxygen"/>
+                    <Run Text="up to a certain limit [3000 colonists worth]"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@"/>
+                    <Run Foreground="Turquoise" Text="Oxygen diffuser:"/>
+                    <Run Text="distributes incoming"/>
+                    <Run Foreground="Turquoise" Text="oxygen"/>
+                    <Run Text="to nearby [radius of 5] tiles"/>
+            </TextBlock>
+
+            <!-- #endregion -->
+
+            <!-- #region Roads -->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,0" TextWrapping="Wrap">
+                    <Run Foreground="LightBlue" Text="Roads"/>
+            </TextBlock>
+
+            <TextBlock Margin="20, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="Roads connnect all of your"/>
+                    <Run Text="zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <Run Text="and"/>
+                    <Run Foreground="Magenta" Text="buildings."/>
+            </TextBlock>
+            <TextBlock Margin="20, 0, 0, 0" FontSize="28" TextWrapping="Wrap">
+                    <Run FontWeight="Bold" Text="Your"/>
+                    <Run Foreground="Yellow" Text="colonists"/>
+                    <Run FontWeight="Bold" Text="will only build on the"/>
+                    <Run FontWeight="Bold" Text="zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <Run FontWeight="Bold" Text="and use the"/>
+                    <Run FontWeight="Bold" Foreground="Magenta" Text="buildings"/>
+                    <Run FontWeight="Bold" Text="that are connected to the"/>
+                    <Run FontWeight="Bold" Foreground="Red" Text="City Hall."/>
+            </TextBlock>
+
+            <!-- #endregion -->
+
+            <!-- #region Meteors -->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,0" TextWrapping="Wrap">
+                    <Run Foreground="PaleVioletRed" Text="Meteors"/>
+            </TextBlock>
+
+            <TextBlock Margin="20, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="You can summon a"/>
+                    <Run Foreground="PaleVioletRed" Text="meteor strike"/>
+                    <Run Text="onto your colony."/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 5, 0, 0" FontSize="25" TextWrapping="Wrap">     
+                    <Run Text="@"/>
+                    <Run FontWeight="Bold" Text="Zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <Run Text="lose capacity and decrease"/>
+                    <Run FontWeight="Bold" Foreground="Orange" Text="satisfaction"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ Some"/>
+                    <Run Foreground="Yellow" Text="colonists"/>
+                    <Run Text="die when their living or workplace is struck"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@"/>
+                    <Run FontWeight="Bold" Foreground="Magenta" Text="Buildings"/>
+                    <Run Text="lose effectiveness"/>
+            </TextBlock>
+
+            <TextBlock Margin="20, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="You have to"/>
+                    <Run Foreground="PaleVioletRed" Text="repair"/>
+                    <Run Text="them to get back capacity and effectiveness."/>
+            </TextBlock>
+
+            <!-- #endregion -->
+            
+            <!-- #region Satisfaction -->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,5" TextWrapping="Wrap">
+                    <Run Foreground="Orange" Text="Satisfaction"/>
+            </TextBlock>
+
+            <TextBlock Margin="20, 0, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Foreground="Orange" Text="Satisfaction"/>
+                    <Run Text="measures how well the colony is managed according to the"/>
+                    <Run Foreground="Yellow" Text="colonists."/>
+                <LineBreak/>
+                    <Run Text="This is the most important metric, letting it drop too low will result in riots and a forceful change in leadership."/>
+                <LineBreak/>
+                    <Run Text="Factors affecting"/>
+                    <Run Foreground="Orange" Text="satisfaction:"/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="@"/>
+                    <Run Text="Providing"/>
+                    <Run Foreground="Yellow" Text="colonists"/>
+                    <Run Text="with no"/>
+                    <Run Foreground="Orange" Text="safety"/>
+                    <Run Text="or form of recreation will result in a sharp decline in"/>
+                    <Run Foreground="Orange" Text="satisfaction"/>
+                    <LineBreak/>
+                
+                    <Run Text="@"/>
+                    <Run Text="Increasing taxes will lower"/>
+                    <Run Foreground="Orange" Text="satisfaction"/>
+                    <Run Text="colony-wide, while tax cuts will improve it"/>
+                    <LineBreak/>
+                
+                    <Run Text="@"/>
+                    <Run Text="Proximity to factories lowers"/>
+                    <Run Foreground="Orange" Text="satisfaction"/>
+                    <LineBreak/>
+                
+                    <Run Text="@"/>
+                    <Run Text="Insufficient"/>
+                    <Run Foreground="Turquoise" Text="oxygen"/>
+                    <Run Text="supply, a negative balance and damaged"/>
+                    <Run Foreground="Magenta" Text="buildings"/>
+                    <Run Text="in the surrounding area all have a substantial negative effect on"/>
+                    <Run Foreground="Orange" Text="satisfaction"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@"/>
+                    <Run Text="A level 3"/>
+                    <Run Foreground="Red" Text="City Hall"/>
+                    <Run Text="provides a 10% bonus, while upgrading to level 4 gives an additional 20% bonus to the overall"/>
+                    <Run Foreground="Orange" Text="satisfaction"/>    
+                    <Run Text="of the colony"/>
+            </TextBlock>
+            <!-- #endregion -->
+            
+            <!-- #region Game Over-->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,0" TextWrapping="Wrap">
+                    <Run Foreground="Red" Text="Game over"/>
+            </TextBlock>
+
+            <TextBlock Margin="20, 5, 0, 0" FontSize="25" TextWrapping="Wrap">
+                    <Run Text="Do not let"/>
+                    <Run Foreground="Orange" Text="satisfaction"/>
+                    <Run Text="drop too low [10% or below]. If you do, your"/>
+                    <Run Foreground="Yellow" Text="colonists"/>
+                    <Run Text="will rise up against You, and you"/>
+                    <Run Foreground="Red" Text="Lose"/>
+            </TextBlock>
+
+            <!-- #endegion -->
+
+            <!-- #region Interface -->
+
+            <TextBlock FontWeight="Bold" FontSize="40" Margin="0,5,0,0" TextWrapping="Wrap">
+                    <Run Foreground="Green" Text="The Interface"/>
+            </TextBlock>
+
+            <TextBlock FontWeight="Bold" FontSize="30" Margin="20,5,0,0" TextWrapping="Wrap">
+                    <Run Foreground="Green" Text="Top row"/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 5, 0, 0" FontSize="20" TextWrapping="Wrap">
+                    <Run Text="@ Saving: make a new save or overwrite your current one, you can also change the city name with it"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ Invoke a meteor strike catastrophe"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ Select a heatmap for:"/>
+                    <Run FontWeight="Bold" Foreground="PaleVioletRed" Text="damage,"/>
+                    <Run FontWeight="Bold" Foreground="Turquoise" Text="oxygen,"/>
+                    <Run FontWeight="Bold" Foreground="Lime" Text="occupancy,"/>
+                    <Run FontWeight="Bold" Foreground="Orange" Text="safety,"/>
+                    <Run FontWeight="Bold" Foreground="Orange" Text="satisfaction,"/>
+                    <Run FontWeight="Bold" Text="zones">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <LineBreak/>
+                    
+                    <Run Text="@ Quit the game via the"/>
+                    <Run Foreground="Red" Text="X"/>
+            </TextBlock>
+
+            <TextBlock FontWeight="Bold" FontSize="30" Margin="20,5,0,0" TextWrapping="Wrap">
+                    <Run Foreground="Green" Text="Left side"/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 5, 0, 0" FontSize="20" TextWrapping="Wrap">
+                    <Run Text="@ Select your tool (toggle style, press again to clear the selection)"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ View info about your selected tool, or"/>
+                    <Run FontWeight="Bold" Text="zone">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run><!--
+                    --><Run Text="/"/><!--
+                    --><Run FontWeight="Bold" Foreground="Magenta" Text="building"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@"/>
+                    <Run FontWeight="Bold" Foreground="Khaki" Text="Upgrade"/>
+                    <Run Text="selected"/>
+                    <Run FontWeight="Bold" Text="zone">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <LineBreak/>
+                    
+                    <Run Text="@"/>
+                    <Run FontWeight="Bold" Foreground="PaleVioletRed" Text="Repair damage"/>
+                    <Run Text="for selected"/>
+                    <Run FontWeight="Bold" Text="zone">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+            </TextBlock>
+
+            <TextBlock FontWeight="Bold" FontSize="30" Margin="20,5,0,0" TextWrapping="Wrap">
+                    <Run Foreground="Green" Text="Right side"/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 5, 0, 0" FontSize="20" TextWrapping="Wrap">
+                    <Run Text="@ View your current stats"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ Modify the taxes for each"/>
+                    <Run FontWeight="Bold" Text="zonetype">
+                        <Run.Foreground>
+                            <LinearGradientBrush StartPoint="0,1">
+                                <GradientStop Color="Lime" Offset="0.2"/>
+                                <GradientStop Color="Blue" Offset="0.5"/>
+                                <GradientStop Color="Gray" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Run.Foreground>
+                    </Run>
+                    <LineBreak/>
+                    
+                    <Run Text="@ View your past statistics"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ Pause the game"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ Cycle the 3 speed modes"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ Open the help menu"/>
+            </TextBlock>
+
+            <TextBlock FontWeight="Bold" FontSize="30" Margin="20,5,0,0" TextWrapping="Wrap">
+                    <Run Foreground="Green" Text="Bottom row"/>
+            </TextBlock>
+
+            <TextBlock Margin="40, 5, 0, 0" FontSize="20" TextWrapping="Wrap">
+                    <Run Text="@ View the Mars date"/>
+                    <LineBreak/>
+                    
+                    <Run Text="@ View your city name"/>
+                    <LineBreak/>
+            </TextBlock>
+
+            <!-- #endregion -->
+
+        </StackPanel>
+    </Grid>
+</UserControl>

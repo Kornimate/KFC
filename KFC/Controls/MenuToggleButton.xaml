@@ -1,0 +1,21 @@
+﻿<UserControl 
+  x:Class="KFC.Controls.MenuToggleButton"
+  xmlns:kfctrl="clr-namespace:KFC.Controls" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Name="_menuRadioButton">
+
+  <Grid Cursor="Hand">
+
+    <kfctrl:OptionalRadioButton 
+      GroupName="{Binding GroupName, ElementName=_menuRadioButton}"
+      Style="{StaticResource MenuToggleButtonStyle}"
+      Content="{Binding Label, ElementName=_menuRadioButton}"
+      Width="{Binding Width, ElementName=_menuRadioButton}"
+      Height="{Binding Height, ElementName=_menuRadioButton}"
+      Command="{Binding Command, ElementName=_menuRadioButton}"
+      CommandParameter="{Binding CommandParameter, ElementName=_menuRadioButton}"/>
+
+  </Grid>
+  
+</UserControl>

@@ -1,0 +1,230 @@
+﻿<UserControl 
+  x:Class="KFC.Controls.Tile"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:gif="http://wpfanimatedgif.codeplex.com"
+  x:Name="_tile">
+  
+  <Grid>
+
+    <Grid.Resources>
+      <Style TargetType="Border">
+        <Setter Property="Margin" Value="0"/>
+      </Style>
+    </Grid.Resources>
+        
+    <!--#region BuildingLayer-->
+    <Image x:Name="_buildingLayer"
+      IsHitTestVisible="False"
+      Source="{Binding TileImageBuildingSource, ElementName=_tile}"/>
+    <!--#endregion-->
+    
+    <!--#region ZoneLayer-->
+    <Border x:Name="_zoneLayer" 
+      IsHitTestVisible="False"
+      Background="{Binding ZoneColor, ElementName=_tile}" 
+      Opacity="{Binding ZoneOpacity, ElementName=_tile}"/>
+    <!--#endregion-->
+    
+    <!--#region OxygenLayer-->
+    <Image x:Name="_oxigenLayer"
+      IsHitTestVisible="False"
+      Opacity="0.7"
+      Source="{Binding TileImageOxygenSource, ElementName=_tile}"/>
+    <!--#endregion-->
+
+    <!--#region FilterLayer-->
+    <Border x:Name="_filterLayer" Opacity="0.3" 
+      Background="Transparent"
+      IsHitTestVisible="False"> 
+      <Border.Style>
+        <Style TargetType="Border">
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=FilterColor, 
+              RelativeSource={RelativeSource Mode=FindAncestor, 
+              AncestorType=UserControl}}"
+              Value="Azure">
+              
+              <DataTrigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    
+                    <ThicknessAnimation Duration="0:0:0.2" 
+                      Storyboard.TargetProperty="Margin"
+                      To="0" From="10"/>
+
+                    <ColorAnimation Duration="0:0:0.2" 
+                      Storyboard.TargetProperty="Background.Color"
+                      To="#6FF"/>
+
+                    <DoubleAnimation Duration="0:0:1.5" 
+                      Storyboard.TargetProperty="Opacity"
+                      To="0.7" RepeatBehavior="Forever" AutoReverse="True"/>
+                    
+                  </Storyboard>
+                </BeginStoryboard>
+              </DataTrigger.EnterActions>
+              
+              <DataTrigger.ExitActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    
+                    <ThicknessAnimation Duration="0:0:0.2" 
+                      Storyboard.TargetProperty="Margin"
+                      To="10" From="0"/>
+
+                    <ColorAnimation Duration="0:0:0.2" 
+                      Storyboard.TargetProperty="Background.Color"
+                      To="#0000"/>
+                    
+                  </Storyboard>
+                </BeginStoryboard>
+              </DataTrigger.ExitActions>
+              
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=FilterColor, 
+              RelativeSource={RelativeSource Mode=FindAncestor, 
+              AncestorType=UserControl}}"
+              Value="Transparent">
+              
+              <DataTrigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    
+                    <ObjectAnimationUsingKeyFrames 
+                      Storyboard.TargetProperty="Visibility"
+                      Duration="0" BeginTime="0:0:0.2">
+                      <DiscreteObjectKeyFrame Value="{x:Static Visibility.Collapsed}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    
+                  </Storyboard>
+                </BeginStoryboard>
+              </DataTrigger.EnterActions>
+              
+              <DataTrigger.ExitActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    
+                    <ObjectAnimationUsingKeyFrames 
+                      Storyboard.TargetProperty="Visibility"
+                      Duration="0" BeginTime="0:0:0">
+                      <DiscreteObjectKeyFrame Value="{x:Static Visibility.Visible}" />
+                    </ObjectAnimationUsingKeyFrames>
+                    
+                  </Storyboard>
+                </BeginStoryboard>
+              </DataTrigger.ExitActions>
+             
+            </DataTrigger>
+
+
+          </Style.Triggers>
+        </Style>
+      </Border.Style>
+    </Border>
+    <!--#endregion-->
+    
+    <!--#region InteractionLayer-->
+    <Button x:Name="_interactionLayer"
+      Style="{StaticResource TileInteractionStyle}"
+      Command="{Binding Command, ElementName=_tile}"
+      CommandParameter="{Binding CommandParameter, ElementName=_tile}"/>
+    <!--#endregion-->
+    
+    <!--#region MeteorLayer-->
+    <Border x:Name="_meteorLayer" Opacity="0" Margin="0,-400,0,0"
+      Height="64" Width="32" IsHitTestVisible="False">
+      <Border.Style>
+        <Style TargetType="Border">
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=IsMeteorFalling,  
+              RelativeSource={RelativeSource Mode=FindAncestor, 
+              AncestorType=UserControl}}"
+              Value="True">
+              
+              <DataTrigger.EnterActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                      Duration="0:0:1" To="1"/>
+                    
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                      Duration="0:0:0.3" To="0.7" BeginTime="0:0:2"/>
+
+                    <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                      Duration="0:0:1" To="0,-32,0,0">
+                      <ThicknessAnimation.EasingFunction>
+                        <CubicEase EasingMode="EaseIn"/>
+                      </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+
+                    <DoubleAnimation Storyboard.TargetProperty="Height"
+                      To="32" BeginTime="0:0:1.5"
+                      Duration="0:0:0"/>
+
+                    <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                      To="0" BeginTime="0:0:1.5"
+                      Duration="0:0:0"/>
+                    
+                  </Storyboard>
+                </BeginStoryboard>
+              </DataTrigger.EnterActions>
+              <DataTrigger.ExitActions>
+                <BeginStoryboard>
+                  <Storyboard>
+                    
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                      Duration="0:0:0" To="0"/>
+                    
+                    <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                      Duration="0:0:0" To="0,-400,0,0"/>
+                    
+                    <DoubleAnimation Storyboard.TargetProperty="Height"
+                      To="64" BeginTime="0:0:0"
+                      Duration="0:0:0"/>
+                    
+                  </Storyboard>
+                </BeginStoryboard>
+              </DataTrigger.ExitActions>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </Border.Style>
+
+      <Image x:Name="_meteorImage" VerticalAlignment="Bottom">
+        <Image.Style>
+          <Style TargetType="Image">
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding Path=IsMeteorFalling,  
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                Value="True">
+                <Setter Property="Visibility" Value="Visible"/>
+                <Setter Property="gif:ImageBehavior.AnimatedSource" Value="../Resources/meteor.gif"/>
+              </DataTrigger>
+              
+              <DataTrigger Binding="{Binding Path=IsMeteorFalling,  
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                Value="False">
+                <Setter Property="Visibility" Value="Collapsed"/>
+                <Setter Property="gif:ImageBehavior.AnimatedSource" Value="../Resources/meteor.gif"/>
+              </DataTrigger>
+
+              <DataTrigger Binding="{Binding Path=ActualHeight, 
+                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Border}}" 
+                Value="32">
+                <Setter Property="gif:ImageBehavior.AnimatedSource" Value="../Resources/dmg_marker.png"/>
+              </DataTrigger>
+
+            </Style.Triggers>
+          </Style>
+        </Image.Style>
+      </Image>
+
+    </Border>
+    <!--#endregion-->
+    
+  </Grid>
+
+</UserControl>

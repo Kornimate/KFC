@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  
+  <Style TargetType="{x:Type Button}"
+    x:Key="TileInteractionStyle">
+
+    <Style.Setters>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Grid Background="#0fff" x:Name="_target"/>
+
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                  <BeginStoryboard>
+                    <Storyboard>
+
+
+                      <ColorAnimation Storyboard.TargetName="_target"
+                        Storyboard.TargetProperty="Background.Color"
+                        From="#2fff"  To="#5fff" 
+                        Duration="0:0:0.4"
+                        AutoReverse="True" 
+                        RepeatBehavior="Forever"
+                        FillBehavior="Stop">                        
+                        <ColorAnimation.EasingFunction>
+                          <SineEase/>
+                        </ColorAnimation.EasingFunction>
+                      </ColorAnimation>
+                      
+                    </Storyboard>
+                  </BeginStoryboard>
+                </Trigger.EnterActions>
+
+                <Trigger.ExitActions>
+                  <BeginStoryboard>
+                    <Storyboard>
+
+                      <ColorAnimation Storyboard.TargetName="_target"
+                        Storyboard.TargetProperty="Background.Color"
+                        To="#0fff" Duration="0:0:0.1"/>
+                      
+                    </Storyboard>
+                  </BeginStoryboard>
+                </Trigger.ExitActions>
+                
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style.Setters>
+  </Style>
+</ResourceDictionary>

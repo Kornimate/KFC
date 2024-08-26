@@ -1,0 +1,75 @@
+﻿<UserControl 
+  x:Class="KFC.Controls.MenuButtonImage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Name="_menuButtonImage">
+
+  <Grid Cursor="Hand">
+    <Grid.Effect>
+      <DropShadowEffect Opacity="0" 
+        ShadowDepth="0" 
+        Color="#A8E56E" 
+        BlurRadius="5" 
+        RenderingBias="Performance"/>
+    </Grid.Effect>
+    
+    <Button Style="{StaticResource MenuButtonImageStyle}"
+      Command="{Binding Command, ElementName=_menuButtonImage}"
+      CommandParameter="{Binding CommandParameter, ElementName=_menuButtonImage}"
+      Height="{Binding Height, ElementName=_menuButtonImage}"
+      Width="{Binding Width,ElementName=_menuButtonImage}"/>
+
+
+    <Image Source="{Binding ImageSource, ElementName=_menuButtonImage}"
+      Stretch="UniformToFill" 
+      IsHitTestVisible="False"
+      Panel.ZIndex="-1"
+      Margin="2"/>
+
+    <Grid.Style>
+      <Style TargetType="Grid">
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding Path=IsHighPriority, ElementName=_menuButtonImage}" Value="True">
+            
+            <DataTrigger.EnterActions>
+              <BeginStoryboard>
+                <Storyboard>
+                  
+                  <DoubleAnimation Storyboard.TargetProperty="(Effect).Opacity"
+                    Duration="0:0:0.5" To="1"/>
+                  
+                  <DoubleAnimation Storyboard.TargetProperty="(Effect).BlurRadius"
+                    Duration="0:0:0.5" To="50" From="20"
+                    AutoReverse="True"
+                    RepeatBehavior="Forever">
+                    <DoubleAnimation.EasingFunction>
+                      <SineEase EasingMode="EaseInOut"/>
+                    </DoubleAnimation.EasingFunction>
+                  </DoubleAnimation>
+                  
+                </Storyboard>
+              </BeginStoryboard>
+            </DataTrigger.EnterActions>
+            
+            <DataTrigger.ExitActions>
+              <BeginStoryboard>
+                <Storyboard>
+                  
+                  <DoubleAnimation Storyboard.TargetProperty="(Effect).Opacity"
+                    Duration="0:0:0.5" To="0"/>
+                  
+                  <DoubleAnimation Storyboard.TargetProperty="(Effect).BlurRadius"
+                    Duration="0:0:0.5" To="0"/>
+                  
+                </Storyboard>
+              </BeginStoryboard>
+            </DataTrigger.ExitActions>
+            
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+    </Grid.Style>
+
+  </Grid>
+  
+</UserControl>

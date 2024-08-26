@@ -1,0 +1,647 @@
+﻿<UserControl x:Class="KFC.Controls.PacketInfo"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Name="_packetInfo">
+  
+  <Grid>
+
+    <Grid.Resources>
+      <Style TargetType="TextBlock">
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+      </Style>
+    </Grid.Resources>
+
+    <!--#region CityHall-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="CityHall">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style> 
+      <!--manages visibility-->
+      
+      <TextBlock FontSize="40" Text="City Hall"
+        Foreground="Red" Margin="0,0,0,10"/>
+
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Text="First building of your colony."/>
+        <LineBreak/>
+        <Run Text="Grants 1000"/>
+        <Run Foreground="Yellow" Text="colonists"/>
+        <Run Text="but their"/>
+        <Run Foreground="Orange" Text="satisfaction"/>
+        <Run Text="is low."/>
+        <LineBreak/>
+        <Run Foreground="Khaki" Text="Upgrading"/>
+        <Run Text="grants overall bonuses to your entire colony."/>
+
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center">
+        <Run Text="Price:"/>
+        <Run Foreground="Yellow" Text="10 000 K"/>
+        <LineBreak/>
+        <Run Text="Upkeep:"/>
+        <Run Foreground="Yellow" Text="5 000 K"/>
+        <LineBreak/>
+        <Run Text="Upgradeable"/>
+        <LineBreak/>
+        <Run Foreground="Yellow" Text="25 000"/><!--
+        --><Run Text="/"/><!--
+        --><Run Foreground="Yellow" Text="50 000"/><!--
+        --><Run Text="/"/><!--
+        --><Run Foreground="Yellow" Text="100 000 K"/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Industrial Zone-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="Industrial">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="30" Text="Industrial Zone"
+        Foreground="Gray" Margin="0,0,0,20"/>
+        
+        <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+          <Run Foreground="LightGray" Text="This is a selection tool!"/>
+        </TextBlock>
+        
+        <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+          <Run Text="High capacity workplace for your"/>
+          <Run Foreground="Yellow" Text="colonists"/>
+          <Run Text="to work at."/>
+          <LineBreak/>
+          <Run Text="Decreases"/>
+          <Run Foreground="Orange" Text="satisfaction"/>
+          <Run Text="for nearby"/>
+          <Run Foreground="Lime" Text="residential zones."/>
+      </TextBlock>
+        
+      <TextBlock FontSize="22" Margin="0, 10, 0, 0" TextAlignment="Center">
+        <Run Text="Price:"/>
+        <Run Foreground="Yellow" Text="500 K/Zone"/>
+        <LineBreak/>
+        <Run Text="Upgradeable"/>
+        <LineBreak/>
+        <Run Foreground="Yellow" Text="500"/><!--
+        --><Run Text="/"/><!--
+        --><Run Foreground="Yellow" Text="1 000"/><!--
+        --><Run Text="/"/><!--
+        --><Run Foreground="Yellow" Text="1 500 K/Zone"/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Residential Zone-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="Residential">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+        <TextBlock FontSize="30" Text="Residential Zone"
+          Foreground="Lime" Margin="0,0,0,20"/>
+
+        <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+          <Run Foreground="LightGray" Text="This is a selection tool!"/>
+        </TextBlock>
+        
+        <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+          <Run Text="Living place for"/>
+          <Run Foreground="Yellow" Text="colonists."/>
+        </TextBlock>
+
+        <TextBlock FontSize="22" Margin="0, 10, 0, 0" TextAlignment="Center">
+          <Run Text="Price:"/>
+          <Run Foreground="Yellow" Text="100 K/Zone"/>
+          <LineBreak/>
+          <Run Text="Upgradeable"/>
+          <LineBreak/>
+          <Run Foreground="Yellow" Text="500"/><!--
+          --><Run Text="/"/><!--
+          --><Run Foreground="Yellow" Text="1 000"/><!--
+          --><Run Text="/"/><!--
+          --><Run Foreground="Yellow" Text="1 500 K/Zone"/>
+        </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Service Zone-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="Service">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+        <TextBlock FontSize="30" Text="Service Zone"
+          Foreground="Blue" Margin="0,0,0,20"/>
+
+        <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+          <Run Foreground="LightGray" Text="This is a selection tool!"/>
+        </TextBlock>
+
+        <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+          <Run Text="Small capacity workplace for your"/>
+          <Run Foreground="Yellow" Text="colonists"/>
+          <Run Text="to work at."/>
+          <LineBreak/>
+          <Run Text="Does not affect"/>
+          <Run Foreground="Orange" Text="satisfaction."/>
+        </TextBlock>
+
+        <TextBlock FontSize="22" Margin="0, 10, 0, 0" TextAlignment="Center">
+          <Run Text="Price:"/>
+          <Run Foreground="Yellow" Text="200 K/Zone"/>
+          <LineBreak/>
+          <Run Text="Upgradeable"/>
+          <LineBreak/>
+          <Run Foreground="Yellow" Text="500"/><!--
+          --><Run Text="/"/><!--
+          --><Run Foreground="Yellow" Text="1 000"/><!--
+          --><Run Text="/"/><!--
+          --><Run Foreground="Yellow" Text="1 500 K/Zone"/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Police Station-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="PoliceStation">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="30" Text="Police Station"
+          Foreground="Orange" Margin="0,0,0,20"/>
+
+      <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+        <Run Foreground="LightGray" Text="This is a building!"/>
+      </TextBlock>
+
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Text="Provides safety for"/>
+        <Run Text="zones">
+          <Run.Foreground>
+            <LinearGradientBrush StartPoint="0,1">
+              <GradientStop Color="Lime" Offset="0.2"/>
+              <GradientStop Color="Blue" Offset="0.5"/>
+               <GradientStop Color="Gray" Offset="0.8"/>
+            </LinearGradientBrush>
+          </Run.Foreground>
+        </Run>
+        <Run Text="in a radius of 5 around it."/>
+        <LineBreak/>
+        <Run Text="Safety increases affected"/>
+        <Run Foreground="Yellow" Text="colonists"/>
+        <Run Foreground="Orange" Text="satisfaction."/>
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center">
+        <Run Text="Price:"/>
+        <Run Foreground="Yellow" Text="4 000 K"/>
+        <LineBreak/>
+        <Run Text="Upkeep:"/>
+        <Run Foreground="Yellow" Text="2 000 K"/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Park-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="Park">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+       <TextBlock FontSize="30" Text="Park"
+          Foreground="Orange" Margin="0,0,0,20"/>
+
+       <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+         <Run Foreground="LightGray" Text="This is a building!"/>
+       </TextBlock>
+
+       <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+         <Run Text="Increases"/>
+         <Run Foreground="Orange" Text="satisfaction"/>
+         <Run Text="of"/>
+         <Run Foreground="Yellow" Text="colonists"/>
+         <Run Text="in a radius of 5."/>
+       </TextBlock>
+
+       <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center">
+         <Run Text="Price:"/>
+         <Run Foreground="Yellow" Text="2 000 K"/>
+         <LineBreak/>
+         <Run Text="Upkeep:"/>
+         <Run Foreground="Yellow" Text="1 000 K"/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Oxygen Generator-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="OxygenGenerator">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="27" Text="Oxygen Generator"
+          Foreground="Turquoise" Margin="0,0,0,20"/>
+
+      <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+        <Run Foreground="LightGray" Text="This is a building!"/>
+      </TextBlock>
+
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Text="Generates"/>
+        <Run Foreground="Turquoise" Text="oxygen."/>
+        <Run Text="Connect this building to"/>
+        <Run Foreground="Turquoise" Text="diffusers"/>
+        <Run Text="via"/>
+        <Run Foreground="Turquoise" Text="pipes."/>
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center">
+        <Run Text="Oxygen:"/>
+        <Run Foreground="Turquoise" Text="2 000 units"/>
+        <LineBreak/>
+        <Run Text="Price:"/>
+        <Run Foreground="Yellow" Text="6 000 K"/>
+        <LineBreak/>
+        <Run Text="Upkeep:"/>
+        <Run Foreground="Yellow" Text="3 000 K"/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Pipe (both)-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="Pipe">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="30" Text="Pipe"
+        Foreground="Turquoise" Margin="0,0,0,20"/>
+
+      <TextBlock FontSize="17" Margin="0, -15, 0, 5">
+        <Run Foreground="LightGray" Text="Selection / single tile tool!"/>
+      </TextBlock>
+
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Text="Undeground"/>
+        <Run Foreground="Turquoise" Text="pipes"/>
+        <Run Text="to connect"/>
+        <Run Foreground="Turquoise" Text="generators"/>
+        <Run Text="to"/>
+        <Run Foreground="Turquoise" Text="diffusers."/>
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center">
+        <Run Text="Price:"/>
+        <Run Foreground="Yellow" Text="20 K/pipe"/>
+        <LineBreak/>
+        <Run Text="Upkeep:"/>
+        <Run Foreground="Yellow" Text="4 K/pipe"/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Oxygen Diffuser-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="OxygenDiffuser">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="30" Text="Oxygen Diffuser"
+          Foreground="Turquoise" Margin="0,0,0,20"/>
+
+      <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+        <Run Foreground="LightGray" Text="This is a building!"/>
+      </TextBlock>
+
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Text="Distributes incoming"/>
+        <Run Foreground="Turquoise" Text="oxygen"/>
+        <Run Text="to buildings and"/>
+        <Run Text="zones">
+          <Run.Foreground>
+            <LinearGradientBrush StartPoint="0,1">
+              <GradientStop Color="Lime" Offset="0.2"/>
+              <GradientStop Color="Blue" Offset="0.5"/>
+               <GradientStop Color="Gray" Offset="0.8"/>
+            </LinearGradientBrush>
+          </Run.Foreground>
+        </Run>
+        <Run Text="in a radius of 5."/>
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center">
+         <Run Text="Price:"/>
+         <Run Foreground="Yellow" Text="1 000 K"/>
+         <LineBreak/>
+         <Run Text="Upkeep:"/>
+         <Run Foreground="Yellow" Text="500 K"/>
+       </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Delete Zone-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="ZoneDeleting">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="30" Text="Delete Zone"
+          Foreground="PaleVioletRed" Margin="0,0,0,20"/>
+
+      <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+        <Run Foreground="LightGray" Text="This is a selection tool!"/>
+      </TextBlock>
+
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Text="Destroys selected"/>
+        <Run Text="zones">
+          <Run.Foreground>
+            <LinearGradientBrush StartPoint="0,1">
+              <GradientStop Color="Lime" Offset="0.2"/>
+              <GradientStop Color="Blue" Offset="0.5"/>
+               <GradientStop Color="Gray" Offset="0.8"/>
+            </LinearGradientBrush>
+          </Run.Foreground>
+        </Run>
+        <Run Text="if no"/>
+          <Run Foreground="Yellow" Text="colonists"/>
+        <Run Text="have built on them."/>
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center" TextWrapping="Wrap">
+         <Run Text="Returns a part of the build cost."/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Delete Building-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="BuildingDeleting">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="30" Text="Delete Building"
+          Foreground="PaleVioletRed" Margin="0,0,0,20"/>
+
+      <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+        <Run Foreground="LightGray" Text="This is a single tile tool!"/>
+      </TextBlock>
+
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Text="Destroys selected building if it is not part of an"/>
+        <Run Foreground="Turquoise" Text="oxygen"/>
+        <Run Text="supply network."/>
+        <LineBreak/>
+        <Run Text="Can also delete"/>
+        <Run Foreground="LightBlue" Text="roads"/>
+        <Run Text="if"/>
+        <Run Foreground="Yellow" Text="colonits"/>
+        <Run Text="can still reach the"/>
+        <Run Foreground="red" Text="City Hall"/>
+        <Run Text="afterwards."/>
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center" TextWrapping="Wrap">
+         <Run Text="Returns a part of the build cost."/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Delete Pipe-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="PipeDeleting">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="30" Text="Delete Pipe"
+          Foreground="PaleVioletRed" Margin="0,0,0,20"/>
+
+      <TextBlock FontSize="20" Margin="0, -15, 0, 5">
+        <Run Foreground="LightGray" Text="This is a single tile tool!"/>
+      </TextBlock>
+
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Text="Destroys selected"/>
+        <Run Foreground="Turquoise" Text="pipe"/>
+        <Run Text="if it is not part of an"/>
+        <Run Foreground="Turquoise" Text="oxygen"/>
+        <Run Text="supply network."/>
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center" TextWrapping="Wrap">
+         <Run Text="Returns a part of the build cost."/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+    <!--#region Road (both)-->
+    <StackPanel>
+      <StackPanel.Style>
+        <Style TargetType="StackPanel">
+          <Setter Property="Visibility" Value="Collapsed"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PacketName, 
+                RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType=UserControl}}"
+                Value="Road">
+              <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </StackPanel.Style>
+      <!--manages visibility-->
+
+      <TextBlock FontSize="30" Text="Road"
+        Foreground="LightBlue" Margin="0,0,0,20"/>
+
+       <TextBlock FontSize="17" Margin="0, -15, 0, 5">
+        <Run Foreground="LightGray" Text="Selection / single tile tool!"/>
+      </TextBlock>
+        
+      <TextBlock FontSize="20"
+                 TextWrapping="Wrap">
+        
+        <Run Foreground="LightBlue" Text="Roads"/>
+        <Run Text="should connect every building and"/>
+        <Run Text="zone">
+          <Run.Foreground>
+            <LinearGradientBrush StartPoint="0,1">
+              <GradientStop Color="Lime" Offset="0.2"/>
+              <GradientStop Color="Blue" Offset="0.5"/>
+               <GradientStop Color="Gray" Offset="0.8"/>
+            </LinearGradientBrush>
+          </Run.Foreground>
+        </Run>
+        <Run Text="to the"/>
+        <Run Foreground="Red" Text="City Hall."/>
+        <LineBreak/>
+        <Run Text="Non connected tiles do not inflict their effects."/>
+      </TextBlock>
+
+      <TextBlock FontSize="25" Margin="0, 10, 0, 0" TextAlignment="Center">
+        <Run Text="Price:"/>
+        <Run Foreground="Yellow" Text="10 K/road"/>
+        <LineBreak/>
+        <Run Text="Upkeep:"/>
+        <Run Foreground="Yellow" Text="2 K/road"/>
+      </TextBlock>
+    </StackPanel>
+    <!--#endregion-->
+
+  </Grid>
+</UserControl>

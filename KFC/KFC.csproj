@@ -1,0 +1,568 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <PublisherName>KFC</PublisherName>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="Font\MILLENNIA.TTF" />
+    <None Remove="Music\A Positive Direction.mp3" />
+    <None Remove="Music\A Positive Direction.wav" />
+    <None Remove="Music\Afterlife.mp3" />
+    <None Remove="Music\Afterlife.wav" />
+    <None Remove="Music\City Grey.mp3" />
+    <None Remove="Music\City Grey.wav" />
+    <None Remove="Music\Future Club.mp3" />
+    <None Remove="Music\Future Club.wav" />
+    <None Remove="Music\Media.mp3" />
+    <None Remove="Music\Media.wav" />
+    <None Remove="Music\One.mp3" />
+    <None Remove="Music\One.wav" />
+    <None Remove="Music\Option.mp3" />
+    <None Remove="Music\Option.wav" />
+    <None Remove="Resources\b_city_hall.png" />
+    <None Remove="Resources\b_destroy_building.png" />
+    <None Remove="Resources\b_destroy_pipe.png" />
+    <None Remove="Resources\b_destroy_zone.png" />
+    <None Remove="Resources\b_finances.png" />
+    <None Remove="Resources\b_help.png" />
+    <None Remove="Resources\b_industrial_zone.png" />
+    <None Remove="Resources\b_o2_diffuser.png" />
+    <None Remove="Resources\b_o2_generator.png" />
+    <None Remove="Resources\b_park.png" />
+    <None Remove="Resources\b_pause.png" />
+    <None Remove="Resources\b_pipe_selection.png" />
+    <None Remove="Resources\b_pipe_single.png" />
+    <None Remove="Resources\b_police_station.png" />
+    <None Remove="Resources\b_quit.png" />
+    <None Remove="Resources\b_repair.png" />
+    <None Remove="Resources\b_residential_zone.png" />
+    <None Remove="Resources\b_resume.png" />
+    <None Remove="Resources\b_road_selection.png" />
+    <None Remove="Resources\b_road_single.png" />
+    <None Remove="Resources\b_save.png" />
+    <None Remove="Resources\b_service_zone.png" />
+    <None Remove="Resources\b_speed1.png" />
+    <None Remove="Resources\b_speed2.png" />
+    <None Remove="Resources\b_speed3.png" />
+    <None Remove="Resources\b_upgrade.png" />
+    <None Remove="Resources\city_hall_BL.png" />
+    <None Remove="Resources\city_hall_BR.png" />
+    <None Remove="Resources\city_hall_l2_BL.png" />
+    <None Remove="Resources\city_hall_l2_BR.png" />
+    <None Remove="Resources\city_hall_l2_TL.png" />
+    <None Remove="Resources\city_hall_l2_TR.png" />
+    <None Remove="Resources\city_hall_TL.png" />
+    <None Remove="Resources\city_hall_TR.png" />
+    <None Remove="Resources\crater_1.png" />
+    <None Remove="Resources\crater_2.png" />
+    <None Remove="Resources\delete.png" />
+    <None Remove="Resources\dmg_marker.png" />
+    <None Remove="Resources\empty.png" />
+    <None Remove="Resources\habitat1_l1.png" />
+    <None Remove="Resources\habitat1_l2.png" />
+    <None Remove="Resources\habitat1_l3.png" />
+    <None Remove="Resources\habitat2_l1.png" />
+    <None Remove="Resources\habitat2_l2.png" />
+    <None Remove="Resources\habitat2_l3.png" />
+    <None Remove="Resources\habitat_1.png" />
+    <None Remove="Resources\habitat_2.png" />
+    <None Remove="Resources\industrial1.png" />
+    <None Remove="Resources\industrial1_l1.png" />
+    <None Remove="Resources\industrial1_l2.png" />
+    <None Remove="Resources\industrial1_l3.png" />
+    <None Remove="Resources\industrial2.png" />
+    <None Remove="Resources\industrial2_l1.png" />
+    <None Remove="Resources\industrial2_l2.png" />
+    <None Remove="Resources\industrial2_l3.png" />
+    <None Remove="Resources\industrial3.png" />
+    <None Remove="Resources\industrial3_l1.png" />
+    <None Remove="Resources\industrial3_l2.png" />
+    <None Remove="Resources\industrial3_l3.png" />
+    <None Remove="Resources\o2_diffuser.png" />
+    <None Remove="Resources\o2_generator_BL.png" />
+    <None Remove="Resources\o2_generator_BM.png" />
+    <None Remove="Resources\o2_generator_BR.png" />
+    <None Remove="Resources\o2_generator_TL.png" />
+    <None Remove="Resources\o2_generator_TM.png" />
+    <None Remove="Resources\o2_generator_TR.png" />
+    <None Remove="Resources\meteor.gif" />
+    <None Remove="Resources\park_BL.png" />
+    <None Remove="Resources\park_BR.png" />
+    <None Remove="Resources\park_TL.png" />
+    <None Remove="Resources\park_TR.png" />
+    <None Remove="Resources\pause.png" />
+    <None Remove="Resources\pipe_0000.png" />
+    <None Remove="Resources\pipe_0001.png" />
+    <None Remove="Resources\pipe_0010.png" />
+    <None Remove="Resources\pipe_0011.png" />
+    <None Remove="Resources\pipe_0100.png" />
+    <None Remove="Resources\pipe_0101.png" />
+    <None Remove="Resources\pipe_0110.png" />
+    <None Remove="Resources\pipe_0111.png" />
+    <None Remove="Resources\pipe_1000.png" />
+    <None Remove="Resources\pipe_1001.png" />
+    <None Remove="Resources\pipe_1010.png" />
+    <None Remove="Resources\pipe_1011.png" />
+    <None Remove="Resources\pipe_1100.png" />
+    <None Remove="Resources\pipe_1101.png" />
+    <None Remove="Resources\pipe_1110.png" />
+    <None Remove="Resources\pipe_1111.png" />
+    <None Remove="Resources\police_station_L.png" />
+    <None Remove="Resources\police_station_R.png" />
+    <None Remove="Resources\resume.png" />
+    <None Remove="Resources\road_0000.png" />
+    <None Remove="Resources\road_0001.png" />
+    <None Remove="Resources\road_0010.png" />
+    <None Remove="Resources\road_0011.png" />
+    <None Remove="Resources\road_0100.png" />
+    <None Remove="Resources\road_0101.png" />
+    <None Remove="Resources\road_0110.png" />
+    <None Remove="Resources\road_0111.png" />
+    <None Remove="Resources\road_1000.png" />
+    <None Remove="Resources\road_1001.png" />
+    <None Remove="Resources\road_1010.png" />
+    <None Remove="Resources\road_1011.png" />
+    <None Remove="Resources\road_1100.png" />
+    <None Remove="Resources\road_1101.png" />
+    <None Remove="Resources\road_1110.png" />
+    <None Remove="Resources\road_1111.png" />
+    <None Remove="Resources\save.png" />
+    <None Remove="Resources\service1.png" />
+    <None Remove="Resources\service1_l1.png" />
+    <None Remove="Resources\service1_l2.png" />
+    <None Remove="Resources\service1_l3.png" />
+    <None Remove="Resources\service2.png" />
+    <None Remove="Resources\service2_l1.png" />
+    <None Remove="Resources\service2_l2.png" />
+    <None Remove="Resources\service2_l3.png" />
+    <None Remove="Resources\service3.png" />
+    <None Remove="Resources\service3_l1.png" />
+    <None Remove="Resources\service3_l2.png" />
+    <None Remove="Resources\service3_l3.png" />
+    <None Remove="Resources\speed1.png" />
+    <None Remove="Resources\speed2.png" />
+    <None Remove="Resources\speed3.png" />
+    <None Remove="Sprites\Background.png" />
+    <None Remove="Sprites\Logo.ico" />
+    <None Remove="Sprites\Logo.png" />
+    <None Remove="Sprites\Map.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Music\Afterlife.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\City Grey.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Future Club.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Media.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\One.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Option.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_city_hall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_destroy_building.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_destroy_pipe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_destroy_zone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_finances.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_help.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_industrial_zone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_o2_diffuser.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_o2_generator.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_park.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_pipe_selection.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_pipe_single.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_police_station.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_quit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_repair.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_residential_zone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_resume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_road_selection.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_road_single.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_save.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_service_zone.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_speed1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_speed2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_speed3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\b_upgrade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\city_hall_BL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\city_hall_BR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\city_hall_l2_BL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\city_hall_l2_BR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\city_hall_l2_TR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\city_hall_l2_TL.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\city_hall_TL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\city_hall_TR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\crater_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\crater_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\empty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\habitat1_l1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\habitat1_l2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\habitat1_l3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\habitat2_l1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\habitat2_l2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\habitat2_l3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\habitat_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\habitat_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial1_l1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial1_l2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial1_l3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial2_l1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial2_l2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial2_l3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial3_l1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial3_l2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\industrial3_l3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\o2_diffuser.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\o2_generator_BL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\o2_generator_BM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\o2_generator_BR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\o2_generator_TL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\o2_generator_TM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\o2_generator_TR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\park_BL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\park_BR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\park_TL.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\park_TR.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_0000.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_0001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_0010.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_0011.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_0100.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_0101.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_0110.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_0111.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_1000.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_1001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_1010.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_1011.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_1100.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_1101.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_1110.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pipe_1111.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\police_station_L.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\police_station_R.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\resume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_0000.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_0010.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_0001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_0011.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_0100.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_0101.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_0110.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_0111.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_1000.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_1001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_1010.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_1011.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_1100.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_1101.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_1110.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\road_1111.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\save.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service1_l1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service1_l2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service1_l3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service2_l1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service2_l2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service2_l3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service3_l1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service3_l2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\service3_l3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\speed1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\speed2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\speed3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameModel\GameModel.csproj" />
+    <ProjectReference Include="..\GamePersistence\GamePersistence.csproj" />
+    <ProjectReference Include="..\GameViewModel\GameViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Font\MILLENNIA.TTF" />
+    <Content Include="Resources\dmg_marker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\meteor.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+    <Content Include="Music\A Positive Direction.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Sprites\Background.png" />
+    <Resource Include="Sprites\Logo.ico" />
+    <Resource Include="Sprites\Logo.png" />
+    <Resource Include="Sprites\Map.png" />
+  </ItemGroup>
+
+</Project>

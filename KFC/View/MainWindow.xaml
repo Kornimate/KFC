@@ -1,0 +1,1469 @@
+﻿<Window 
+  x:Class="KFC.View.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:kfctrl="clr-namespace:KFC.Controls"
+  xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+  Height="684"
+  Width="1216"
+  AllowsTransparency="True"
+  ResizeMode="CanMinimize"
+  WindowStyle="None"
+  Background="Transparent"
+  Keyboard.PreviewKeyDown="Window_PreviewKeyDown"
+  RenderOptions.BitmapScalingMode="NearestNeighbor" 
+  Icon="../Sprites/Logo.ico"
+  FontFamily="Millennia"
+  x:Name="_main">
+  <Window.InputBindings>
+    <KeyBinding Command="{Binding UpgradeAllCommand}" Gesture="Ctrl+U"/>
+    <KeyBinding Command="{Binding RepairAllCommand}" Gesture="Ctrl+R"/>
+  </Window.InputBindings>
+
+  <Window.Resources>
+    <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    <Style TargetType="ToolTip">
+      <Style.Setters>
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="ToolTip">
+
+              <Grid VerticalAlignment="Center"
+                HorizontalAlignment="Center" 
+                Width="{TemplateBinding Property=Width}"
+                Height="{TemplateBinding Property=Height}"
+                Margin="0, -5">
+
+                <Border BorderThickness="3"
+                  BorderBrush="White"
+                  CornerRadius="5"
+                  Background="#a000"
+                  Margin="5"/>
+
+                <Grid Margin="15">
+
+                  <TextBlock Text="{TemplateBinding Property=Content}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="Aqua"
+                    FontSize="20"
+                    FontFamily="Millennia"/>
+
+                </Grid>
+
+              </Grid>
+
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+        <Setter Property="Placement" Value="Left"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+      </Style.Setters>
+    </Style>
+  </Window.Resources>
+
+  <Viewbox>
+
+    <Border x:Name="_windowBorder"
+    MouseLeftButtonDown="MoveWindow"
+    BorderBrush="Wheat" 
+    BorderThickness="5" 
+    CornerRadius="15"
+    Background="#842">
+
+      <Border x:Name="_window">
+        <Border.Clip>
+          <RectangleGeometry 
+          Rect="0,0,1400,850" 
+          RadiusX="15" RadiusY="15"/>
+        </Border.Clip>
+
+        <Grid x:Name="_container">
+
+          <Grid x:Name="_background" 
+          Height="860">
+            <Image Source="../Sprites/Background.png" 
+            Stretch="UniformToFill" />
+          </Grid>
+
+          <!--#region Main Menu-->
+          <Grid x:Name="_mainMenu" 
+          Margin="0">
+
+            <Grid.Resources>
+              <Style TargetType="Border">
+                <Setter Property="Background" Value="#a000"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="CornerRadius" Value="15"/>
+              </Style>
+            </Grid.Resources>
+
+            <Border x:Name="_mainMenu_menu"
+            Margin="15" Padding="30">
+
+              <StackPanel>
+                <StackPanel.Resources>
+                  <Style TargetType="{x:Type kfctrl:MenuButton}">
+                    <Setter Property="Margin" Value="0, 3"/>
+                    <Setter Property="FontSize" Value="30"/>
+                    <Setter Property="Width" Value="220"/>
+                  </Style>
+                  <Style TargetType="{x:Type kfctrl:MenuButtonRed}">
+                    <Setter Property="Margin" Value="0, 3"/>
+                    <Setter Property="FontSize" Value="30"/>
+                    <Setter Property="Width" Value="220"/>
+                  </Style>
+                </StackPanel.Resources>
+
+                <Border x:Name="_logo"
+                BorderThickness="5"
+                CornerRadius="20"
+                Margin="0,0,0,50"
+                Padding="15">
+                  <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                      <GradientStop Color="Red" Offset="0.2"/>
+                      <GradientStop Color="Orange" Offset="1.0"/>
+                    </LinearGradientBrush>
+                  </Border.BorderBrush>
+                  <Border.Background>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                      <GradientStop Color="#3fa0" Offset="0.2"/>
+                      <GradientStop Color="#3f00" Offset="1"/>
+                    </LinearGradientBrush>
+                  </Border.Background>
+
+                  <StackPanel>
+
+                    <Image Height="200" Width="200"
+                    Source="../Sprites/Logo.png"
+                    Margin="0, 0, 0, -10">
+                      <Image.Effect>
+                        <DropShadowEffect ShadowDepth="10"
+                        Color="Black"
+                        Opacity="0.7"
+                        BlurRadius="10"/>
+                      </Image.Effect>
+                    </Image>
+
+                    <TextBlock Text="KFCity" FontSize="40"
+                    HorizontalAlignment="Center">
+                      <TextBlock.Foreground>
+                        <LinearGradientBrush>
+                          <GradientStop Color="Orange" Offset="1.0"/>
+                          <GradientStop Color="Salmon" Offset="0.4"/>
+                        </LinearGradientBrush>
+                      </TextBlock.Foreground>
+                    </TextBlock>
+
+                  </StackPanel>
+
+                </Border>
+
+                <kfctrl:MenuButton Label="New Game"
+                Command="{Binding NewGameCommand}"
+                Click="StartGameClick"/>
+
+                <kfctrl:MenuButton Label="Credits"
+                Click="ToCredits"/>
+
+                <kfctrl:MenuButton Label="Leaderboard"
+                Click="LaunchBrowserClick"/>
+
+                <kfctrl:MenuButtonRed Label="Exit Game"
+                Command="{Binding ExitGameCommand}"
+                Click="ExitGameClick"/>
+
+              </StackPanel>
+            </Border>
+
+            <Border x:Name="_mainMenu_saveSlots"
+            HorizontalAlignment="Right"
+            Margin="15" Padding="10">
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ScrollViewer MaxHeight="300" VerticalScrollBarVisibility="Hidden">
+
+                  <ItemsControl ItemsSource="{Binding Saves}">
+                    <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                        <StackPanel>
+                          <StackPanel.Resources>
+                            <Style TargetType="kfctrl:SaveFile">
+                              <Setter Property="FontSize" Value="25"/>
+                              <Setter Property="HorizontalAlignment" Value="Right"/>
+                            </Style>
+                          </StackPanel.Resources>
+                        </StackPanel>
+                      </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <kfctrl:SaveFile Label="{Binding SaveName}" 
+                      Command="{Binding LoadCommand}"
+                      DeleteCommand="{Binding DeleteCommand}"/>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+
+                </ScrollViewer>
+
+                <Rectangle Height="3" Grid.Row="1" Margin="0,10"
+                RadiusX="3" RadiusY="3">
+                  <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                      <GradientStop Color="White" Offset="0.0"/>
+                      <GradientStop Color="Transparent" Offset="1.0"/>
+                    </LinearGradientBrush>
+                  </Rectangle.Fill>
+                </Rectangle>
+
+                <kfctrl:MenuButton x:Name="_musicBtn"
+                Label="Music: On"
+                Click="Music_Switch"
+                Grid.Row="2"
+                FontSize="20"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"/>
+              </Grid>
+
+            </Border>
+
+            <TextBlock Text="made by the Kozsik Fan Club (KFC)" 
+            Margin="5"
+            Background="Transparent" 
+            Foreground="White"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"/>
+
+            <!--#region SavePopup-->
+            <kfctrl:PopUp x:Name="_savePopUp"
+            PopUpMessage="{Binding PopUpMessage}"
+            PopUpTextColor="{Binding PopUpTextColor}"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Visibility="Collapsed"
+            Opacity="0"
+            Margin="15,50"
+            Click="HidePopUpClick"/>
+
+
+            <!--#endregion-->
+
+          </Grid>
+          <!--#endregion-->
+
+          <!--#region Credits-->
+          <Grid x:Name="_credits"
+          Visibility="Collapsed"
+          Background="#7000"
+          Opacity="0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--#region Us-->
+            <TextBlock FontSize="35" 
+            Foreground="White"
+            TextAlignment="Center"
+            VerticalAlignment="Center"
+            LineHeight="40">
+              <TextBlock.Resources>
+                <Style TargetType="Run">
+                  <Style.Triggers>
+                    <Trigger Property="Tag" Value="title">
+                      <Setter Property="Foreground" Value="LightGray"/>
+                      <Setter Property="TextDecorations" Value="Underline"/>
+                    </Trigger>
+                    <Trigger Property="Tag" Value="name">
+                      <Setter Property="FontSize" Value="20"/>
+                      <Setter Property="Foreground" Value="OrangeRed"/>
+                      <Setter Property="FontFamily" Value="Arial"/>
+                    </Trigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Resources>
+            
+        <Run Text="Model &amp; Logic" Tag="title"/>
+        <LineBreak/>
+        <Run Text="Dinya Gergely" Tag="name"/>
+        <LineBreak/>
+        <LineBreak/>
+            
+        <Run Text="ViewModel," Tag="title"/>
+        <LineBreak/>
+        <Run Text="Interaction" Tag="title"/>
+        <LineBreak/>
+        <Run Text="Kornidesz Máté" Tag="name"/>
+        <LineBreak/>
+        <LineBreak/>
+            
+        <Run Text="Persistence," Tag="title"/>
+        <LineBreak/>
+        <Run Text="Unit Testing," Tag="title"/>
+        <LineBreak/>
+        <Run Text="Sprites" Tag="title"/>
+        <LineBreak/>
+        <Run Text="Sebők Mátyás" Tag="name"/>
+        <LineBreak/>
+        <LineBreak/>
+            
+        <Run Text="View &amp; Effects" Tag="title"/>
+        <LineBreak/>
+        <Run Text="Horváth Ádám" Tag="name"/>
+
+            </TextBlock>
+            <!--#endregion-->
+
+            <!--#region Music-->
+            <TextBlock FontSize="35" 
+            Foreground="White"
+            TextAlignment="Center"
+            VerticalAlignment="Center"
+            LineHeight="40"
+            Grid.Column="1">
+              <TextBlock.Resources>
+                <Style TargetType="Run">
+                  <Style.Triggers>
+                    <Trigger Property="Tag" Value="title">
+                      <Setter Property="Foreground" Value="LightGray"/>
+                      <Setter Property="TextDecorations" Value="Underline"/>
+                    </Trigger>
+                    <Trigger Property="Tag" Value="name">
+                      <Setter Property="FontSize" Value="20"/>
+                      <Setter Property="Foreground" Value="OrangeRed"/>
+                      <Setter Property="FontFamily" Value="Arial"/>
+                    </Trigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Resources>
+            
+            <Run Text="Music" Tag="title"/>
+            <LineBreak/>
+            <Run Text="A Positive Direction - Aylex" Tag="name"/>
+            <LineBreak/>
+            <Run Text="City Grey - birdlee8" Tag="name"/>
+            <LineBreak/>
+            <Run Text="Media - Aylex" Tag="name"/>
+            <LineBreak/>
+            <Run Text="Option - Aylex" Tag="name"/>
+            <LineBreak/>
+            <Run Text="Afterlife - Galaxy Tones" Tag="name"/>
+            <LineBreak/>
+            <Run Text="One - Sirius Beat" Tag="name"/>
+            <LineBreak/>
+            <Run Text="Future Club - Sirius Beat" Tag="name"/>
+            <LineBreak/>
+            </TextBlock>
+            <!--#endregion-->
+
+          </Grid>
+          <!--#endregion-->
+
+          <!--#region Game Area-->
+          <Grid x:Name="_gameArea"
+          Visibility="Collapsed"
+          Margin="5">
+            <!--#region Grid Definitions-->
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="3*"/>
+              <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <Grid.Resources>
+              <Style TargetType="{x:Type Border}">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Background" Value="#7000"/>
+              </Style>
+              <Style TargetType="{x:Type kfctrl:MenuButtonRed}">
+                <Setter Property="FontSize" Value="15"/>
+              </Style>
+              <Style TargetType="{x:Type kfctrl:MenuButton}">
+                <Setter Property="FontSize" Value="15"/>
+              </Style>
+              <Style TargetType="{x:Type kfctrl:MenuButtonImage}">
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Width" Value="40"/>
+              </Style>
+            </Grid.Resources>
+
+            <!--#region Top Menu-->
+            <Border x:Name="_topGameMenuContainer"
+            Height="0"
+            VerticalAlignment="Top"
+            Grid.ColumnSpan="3"
+            CornerRadius="5">
+
+              <Border.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                  <EventTrigger.Actions>
+                    <BeginStoryboard>
+                      <Storyboard>
+
+                        <ColorAnimation Storyboard.TargetName="_topGameMenuContainer"
+                        Storyboard.TargetProperty="Background.Color"
+                        To="#8000" Duration="0:0:0.1" FillBehavior="HoldEnd"/>
+
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger.Actions>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="MouseLeave">
+                  <EventTrigger.Actions>
+                    <BeginStoryboard>
+                      <Storyboard>
+
+                        <ColorAnimation Storyboard.TargetName="_topGameMenuContainer"
+                        Storyboard.TargetProperty="Background.Color"
+                        To="#7000" Duration="0:0:0.1" FillBehavior="HoldEnd"/>
+
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger.Actions>
+                </EventTrigger>
+              </Border.Triggers>
+
+              <Grid x:Name="_topGameMenu"
+              Margin="5, 0" Opacity="0" 
+              Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="3*"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <kfctrl:MenuButtonImage ImageSource="../Resources/b_save.png" 
+                HorizontalAlignment="Left"
+                Click="ShowSaveMenu"
+                Command="{Binding SaveMenuOpened}"
+                ToolTip="Save"
+                ToolTipService.InitialShowDelay="0"
+                ToolTipService.Placement="Right"/>
+
+                <kfctrl:MenuButton Label="Meteor" 
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Command="{Binding MeteorCommand}"
+                FontSize="15"/>
+
+                <ItemsControl ItemsSource="{Binding HeatMaps}"  Grid.Column="1">
+
+                  <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                      <StackPanel
+                      Orientation="Horizontal"
+                      HorizontalAlignment="Right">
+                        <StackPanel.Resources>
+                          <Style TargetType="kfctrl:MenuToggleButton">
+                            <Setter Property="GroupName" Value="Heatmaps"/>
+                          </Style>
+                        </StackPanel.Resources>
+                      </StackPanel>
+                    </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <kfctrl:MenuToggleButton Label="{Binding Label}"
+                      Command="{Binding HeatMapCommand}"
+                      CommandParameter="{Binding Label}"
+                      FontSize="15"/>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+                <kfctrl:MenuButtonImage ImageSource="../Resources/b_quit.png"
+                Command="{Binding ExitGameCommand}"
+                HorizontalAlignment="Right"
+                Grid.Column="3"
+                ToolTip="Exit"
+                ToolTipService.InitialShowDelay="0"
+                ToolTipService.Placement="Left"/>
+
+              </Grid>
+
+            </Border>
+            <!--#endregion-->
+
+            <!--#region Left Menu-->
+            <Border x:Name="_leftGameMenu"
+            Width="0" CornerRadius="5"
+            HorizontalAlignment="Left"
+            Grid.Row="1"
+            Grid.RowSpan="2">
+
+              <Border.Triggers>
+
+                <EventTrigger RoutedEvent="MouseEnter">
+                  <EventTrigger.Actions>
+                    <BeginStoryboard>
+                      <Storyboard>
+
+                        <ColorAnimation Storyboard.TargetName="_leftGameMenu"
+                        Storyboard.TargetProperty="Background.Color"
+                        To="#8000" Duration="0:0:0.1" FillBehavior="HoldEnd"/>
+
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger.Actions>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="MouseLeave">
+                  <EventTrigger.Actions>
+                    <BeginStoryboard>
+                      <Storyboard>
+
+                        <ColorAnimation Storyboard.TargetName="_leftGameMenu"
+                        Storyboard.TargetProperty="Background.Color"
+                        To="#7000" Duration="0:0:0.1" FillBehavior="HoldEnd"/>
+
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger.Actions>
+                </EventTrigger>
+
+              </Border.Triggers>
+
+              <Grid Margin="10">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel x:Name="_buildinZoneSelector" VerticalAlignment="Top">
+
+                  <TextBlock Text="Buildings/Zones"
+                  TextDecorations="Underline"
+                  TextAlignment="Center"
+                  Foreground="White"
+                  FontSize="30"
+                  Margin="0,0,0,10"/>
+
+                  <ScrollViewer VerticalScrollBarVisibility="Hidden" MaxHeight="500">
+
+                    <ItemsControl ItemsSource="{Binding Packets}">
+
+                      <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                          <kfctrl:AlignableWrapPanel
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Center"
+                          HorizontalContentAlignment="Center">
+                            <kfctrl:AlignableWrapPanel.Resources>
+                              <Style TargetType="kfctrl:Packet">
+                                <Setter Property="Width" Value="70"/>
+                                <Setter Property="Height" Value="70"/>
+                                <Setter Property="Margin" Value="3"/>
+                                <Setter Property="GroupName" Value="Packets"/>
+                              </Style>
+                            </kfctrl:AlignableWrapPanel.Resources>
+                          </kfctrl:AlignableWrapPanel>
+                        </ItemsPanelTemplate>
+                      </ItemsControl.ItemsPanel>
+
+                      <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                          <kfctrl:Packet ImageSource="{Binding PacketImage}"
+                          Command="{Binding PacketCommand}"
+                          CommandParameter="{Binding PacketParameter}"
+                          ToolTip="{Binding Label}"
+                          ToolTipService.InitialShowDelay="0"
+                          ToolTipService.BetweenShowDelay="0"/>
+
+                        </DataTemplate>
+                      </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+                  </ScrollViewer>
+
+                </StackPanel>
+
+
+                <Rectangle Height="3" Grid.Row="1" Margin="0,10"
+                RadiusX="3" RadiusY="3">
+                  <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                      <GradientStop Color="White" Offset="0.0"/>
+                      <GradientStop Color="Transparent" Offset="1.0"/>
+                    </LinearGradientBrush>
+                  </Rectangle.Fill>
+                </Rectangle>
+
+                <StackPanel x:Name="_informationPanel"
+                Grid.Row="2">
+
+                  <Grid>
+
+                    <StackPanel
+                    Visibility="{Binding Path=IsTileSelected, 
+                    Converter={StaticResource BoolToVisibility}}">
+                      <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                          <Setter Property="Foreground" Value="White"/>
+                          <Setter Property="FontSize" Value="18"/>
+                        </Style>
+                      </StackPanel.Resources>
+
+                      <TextBlock Text="Tile Information"
+                      TextDecorations="Underline"
+                      TextAlignment="Center"
+                      Foreground="White"
+                      FontSize="20"
+                      Margin="0,0,0 5" />
+
+                      <TextBlock Text="{Binding Capacity, StringFormat='Capacity: {0} colonists'}"/>
+                      <TextBlock Text="{Binding Occupancy, StringFormat='Occupancy: {0} colonists'}"/>
+                      <TextBlock Text="{Binding PublicOrder, StringFormat='Public Order: {0}%'}"/>
+                      <TextBlock Text="{Binding SatisfactionRate, StringFormat='Satisfaction Rate: {0}%'}"/>
+                      <TextBlock Text="{Binding ConnectedString}" Foreground="{Binding IsConnected}"/>
+                      <TextBlock Text="{Binding OxygenSupply, StringFormat='Oxygen Supply: {0}'}" 
+                          Foreground="Aqua"/>
+                      <TextBlock Text="{Binding OxygenRequirement, StringFormat='Oxygen Requirement: {0}'}"
+                        Foreground="Aqua"/>
+
+                    </StackPanel>
+
+
+                    <ScrollViewer Height="190" MaxHeight="190" VerticalScrollBarVisibility="Hidden">
+                      <StackPanel
+                    Visibility="{Binding Path=IsPacketSelected, 
+                    Converter={StaticResource BoolToVisibility}}">
+                        <TextBlock Text="Packet Information"
+                        TextDecorations="Underline"
+                        TextAlignment="Center"
+                        Foreground="White"
+                        FontSize="25"
+                        Margin="0,0,0 15" />
+                        <kfctrl:PacketInfo PacketName="{Binding PacketName}"/>
+                      </StackPanel>
+                    </ScrollViewer>
+                  </Grid>
+
+                </StackPanel>
+
+                <Rectangle Height="3" Grid.Row="3" Margin="0,10"
+                RadiusX="3" RadiusY="3">
+                  <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                      <GradientStop Color="White" Offset="0.0"/>
+                      <GradientStop Color="Transparent" Offset="1.0"/>
+                    </LinearGradientBrush>
+                  </Rectangle.Fill>
+                </Rectangle>
+
+                <Grid Grid.Row="5"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Bottom">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+
+                  <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                      <Setter Property="FontSize" Value="20"/>
+                      <Setter Property="Foreground" Value="White"/>
+                      <Setter Property="HorizontalAlignment" Value="Center"/>
+                    </Style>
+                  </Grid.Resources>
+
+                  <Rectangle Width="3"
+                  Grid.Column="1"
+                  Grid.RowSpan="2"
+                  RadiusX="3"
+                  RadiusY="3">
+                    <Rectangle.Fill>
+                      <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="White" Offset="0.0"/>
+                        <GradientStop Color="Transparent" Offset="1.0"/>
+                      </LinearGradientBrush>
+                    </Rectangle.Fill>
+                  </Rectangle>
+
+                  <TextBlock Text="{Binding Level, StringFormat='Level: {0}'}" 
+                  Grid.Column="0"
+                  Grid.Row="0"/>
+
+                  <TextBlock Text="{Binding Damage, StringFormat='Damage: {0}'}"
+                  Grid.Column="2"
+                  Grid.Row="0"/>
+
+                  <kfctrl:MenuButtonImage ImageSource="../Resources/b_upgrade.png"
+                  Command="{Binding UpgradeCommand}"
+                  IsEnabled="{Binding UpgradeEnabled}"
+                  Grid.Column="0"
+                  Grid.Row="1"
+                  ToolTip="Upgrade"
+                  ToolTipService.Placement="Right"
+                  ToolTipService.InitialShowDelay="0"/>
+
+                  <kfctrl:MenuButtonImage ImageSource="../Resources/b_repair.png"
+                  Command="{Binding RepairCommand}"
+                  IsEnabled="{Binding RepairEnabled}"
+                  Grid.Column="2"
+                  Grid.Row="1"
+                  ToolTip="Repair"
+                  ToolTipService.Placement="Right"
+                  ToolTipService.InitialShowDelay="0"/>
+
+                </Grid>
+              </Grid>
+
+            </Border>
+            <!--#endregion-->
+
+            <!--#region Right Menu-->
+            <Border x:Name="_rightGameMenu"
+            Width="0" CornerRadius="5"
+            HorizontalAlignment="Right"
+            Grid.Column="2"
+            Grid.Row="1"
+            Grid.RowSpan="2">
+
+              <Border.Triggers>
+
+                <EventTrigger RoutedEvent="MouseEnter">
+                  <EventTrigger.Actions>
+                    <BeginStoryboard>
+                      <Storyboard>
+
+                        <ColorAnimation Storyboard.TargetName="_rightGameMenu"
+                        Storyboard.TargetProperty="Background.Color"
+                        To="#8000" Duration="0:0:0.1" FillBehavior="HoldEnd"/>
+
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger.Actions>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="MouseLeave">
+                  <EventTrigger.Actions>
+                    <BeginStoryboard>
+                      <Storyboard>
+
+                        <ColorAnimation Storyboard.TargetName="_rightGameMenu"
+                        Storyboard.TargetProperty="Background.Color"
+                        To="#7000" Duration="0:0:0.1" FillBehavior="HoldEnd"/>
+
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger.Actions>
+                </EventTrigger>
+
+              </Border.Triggers>
+
+              <Grid Margin="10">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--#region Statistics-->
+                <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                  </Grid.RowDefinitions>
+
+                  <TextBlock Text="Statistics"
+                  TextDecorations="Underline"
+                  TextAlignment="Center"
+                  Foreground="White"
+                  FontSize="30"/>
+
+                  <StackPanel HorizontalAlignment="Left" Grid.Row="1">
+                    <StackPanel.Resources>
+                      <Style TargetType="TextBlock">
+                        <Setter Property="TextAlignment" Value="Left"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="19"/>
+                        <Setter Property="Margin" Value="0,5"/>
+                      </Style>
+                    </StackPanel.Resources>
+
+                    <TextBlock Text="{Binding Money, StringFormat='Money: {0} c'}" 
+                    Foreground="Yellow" 
+                    Margin="0,20" />
+
+                    <TextBlock Text="{Binding Population, StringFormat='Population: {0} colonists'}" 
+                    Foreground="LightGray"
+                    x:Name="_population"/>
+
+                    <TextBlock Text="{Binding Income, StringFormat='Income: {0} c/m'}" 
+                    Foreground="{Binding IncomeColor}"/>
+
+                    <TextBlock Text="{Binding Tax, StringFormat='Tax: {0} c/m'}" 
+                    Foreground="Lime"/>
+
+                    <TextBlock Text="{Binding UpKeep, StringFormat='Upkeep: {0} c/m'}" 
+                    Foreground="Red"/>
+
+                    <TextBlock Text="{Binding PublicSatisfaction, StringFormat='Public Satisfaction: {0}%'}" 
+                    Foreground="Aquamarine"/>
+
+                  </StackPanel>
+                </Grid>
+                <!--#endregion-->
+
+                <Rectangle Height="3" Grid.Row="1" Margin="0,10"
+                RadiusX="3" RadiusY="3">
+                  <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                      <GradientStop Color="White" Offset="0.0"/>
+                      <GradientStop Color="Transparent" Offset="1.0"/>
+                    </LinearGradientBrush>
+                  </Rectangle.Fill>
+                </Rectangle>
+
+                <!--#region Tax Sliders-->
+                <Grid Grid.Row="2">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                  </Grid.RowDefinitions>
+
+                  <StackPanel Grid.ColumnSpan="2">
+
+                    <TextBlock Text="Tax" 
+                    TextDecorations="Underline"
+                    TextAlignment="Center"
+                    Foreground="White"
+                    FontSize="30"/>
+
+                    <TextBlock Text="Changes apply on the next month."
+                  TextAlignment="Center"
+                  FontStyle="Italic"
+                  Foreground="LightGray"
+                  FontSize="15"
+                  Margin="0,10"/>
+
+                  </StackPanel>
+
+
+                  <Rectangle Grid.Column="0" Grid.Row="1"
+                  Width="3" Height="300"
+                  VerticalAlignment="Top"
+                  RadiusX="3" RadiusY="3"
+                  Margin="5">
+                    <Rectangle.Fill>
+                      <LinearGradientBrush>
+                        <GradientStop Color="White" Offset="0.0"/>
+                        <GradientStop Color="Transparent" Offset="1.0"/>
+                      </LinearGradientBrush>
+                    </Rectangle.Fill>
+                  </Rectangle>
+
+                  <StackPanel HorizontalAlignment="Center"
+                  Grid.Column="1" Grid.Row="1">
+                    <StackPanel.Resources>
+                      <Style TargetType="kfctrl:TaxSlider">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Margin" Value="0,15"/>
+                      </Style>
+                    </StackPanel.Resources>
+
+                    <kfctrl:TaxSlider Label="Residential Tax Rate"
+                    Value="{Binding ResidentialTaxRate, Mode=TwoWay}"
+                    Thumb.DragCompleted="TaxSlider_DragCompleted"/>
+
+                    <kfctrl:TaxSlider Label="Industrial Tax Rate"
+                    Value="{Binding IndustrialTaxRate, Mode=TwoWay}"
+                    Thumb.DragCompleted="TaxSlider_DragCompleted"/>
+
+                    <kfctrl:TaxSlider Label="Service Tax Rate"
+                                    Value="{Binding ServiceTaxRate, Mode=TwoWay}"
+                                    Thumb.DragCompleted="TaxSlider_DragCompleted"/>
+
+                    <kfctrl:MenuButtonImage ImageSource="../Resources/b_finances.png"
+                    Click="ShowFinancesMenuClick"
+                    Command="{Binding FinancesCommand}"
+                    ToolTip="Finances"
+                    ToolTipService.InitialShowDelay="0"
+                    ToolTipService.Placement="Top"
+                    ToolTipService.VerticalOffset="-5"
+                    ToolTipService.HorizontalOffset="-5"/>
+
+                  </StackPanel>
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region Pause, Speed & Help-->
+                <StackPanel Grid.Row="3" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                  <StackPanel.Resources>
+                    <Style TargetType="kfctrl:MenuButtonImage">
+                      <Setter Property="Height" Value="40"/>
+                      <Setter Property="Width" Value="40"/>
+                      <Setter Property="Margin" Value="5"/>
+                    </Style>
+                  </StackPanel.Resources>
+
+                  <kfctrl:MenuButtonImage ImageSource="{Binding PauseImage}"
+                  Command="{Binding SetTimerCommand}"
+                  IsHighPriority="{Binding PlayButtonPulse}"
+                  ToolTip="Pause/Resume"
+                  ToolTipService.InitialShowDelay="0"
+                  ToolTipService.Placement="Top"
+                  ToolTipService.VerticalOffset="-5"
+                  ToolTipService.HorizontalOffset="-5"/>
+
+                  <kfctrl:MenuButtonImage ImageSource="{Binding SpeedImage}" 
+                  Command="{Binding SpeedCommand}"
+                  ToolTip="Change speed"
+                  ToolTipService.InitialShowDelay="0"
+                  ToolTipService.Placement="Top"
+                  ToolTipService.VerticalOffset="-5"
+                  ToolTipService.HorizontalOffset="-5"/>
+
+                  <kfctrl:MenuButtonImage ImageSource="../Resources/b_help.png"
+                  Click="ShowHelp"
+                  Command="{Binding HelpCommand}"
+                  ToolTip="Help"
+                  ToolTipService.InitialShowDelay="0"
+                  ToolTipService.Placement="Top"
+                  ToolTipService.VerticalOffset="-5"
+                  ToolTipService.HorizontalOffset="-5"/>
+
+                </StackPanel>
+                <!--#endregion-->
+              </Grid>
+
+            </Border>
+            <!--#endregion-->
+
+            <!--#region Tile Matrix & Bottom Menu-->
+            <Grid Grid.Column="1" Grid.Row="1" 
+            VerticalAlignment="Center">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="710"/>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+
+              <!--#region Bottom Menu-->
+              <Border x:Name="_bottomGameMenu"
+              CornerRadius="5"
+              VerticalAlignment="Top"
+              Height="30"
+              Margin="0,10,0,0"
+              Grid.Row="1">
+
+                <Border.Triggers>
+
+                  <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                      <BeginStoryboard>
+                        <Storyboard>
+
+                          <ColorAnimation Storyboard.TargetName="_bottomGameMenu"
+                          Storyboard.TargetProperty="Background.Color"
+                          To="#8000" Duration="0:0:0.1" FillBehavior="HoldEnd"/>
+
+                        </Storyboard>
+                      </BeginStoryboard>
+                    </EventTrigger.Actions>
+                  </EventTrigger>
+
+                  <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                      <BeginStoryboard>
+                        <Storyboard>
+
+                          <ColorAnimation Storyboard.TargetName="_bottomGameMenu"
+                          Storyboard.TargetProperty="Background.Color"
+                          To="#7000" Duration="0:0:0.1" FillBehavior="HoldEnd"/>
+
+                        </Storyboard>
+                      </BeginStoryboard>
+                    </EventTrigger.Actions>
+                  </EventTrigger>
+
+                </Border.Triggers>
+
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+
+                  <TextBlock Text="{Binding Date}"
+                  Foreground="White"
+                  FontSize="20" Margin="5"
+                  VerticalAlignment="Center"/>
+
+                  <kfctrl:MusicTrack x:Name="_musicTrack" 
+                  TrackName="" IsPlaying="False" 
+                  Grid.Column="1"
+                  VerticalAlignment="Center"/>
+
+                  <Rectangle Width="3" 
+                  Grid.Column="2" 
+                  RadiusX="3"
+                  RadiusY="3"
+                  Margin="5">
+                    <Rectangle.Fill>
+                      <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="White" Offset="0.0"/>
+                        <GradientStop Color="Transparent" Offset="1.0"/>
+                      </LinearGradientBrush>
+                    </Rectangle.Fill>
+                  </Rectangle>
+
+                  <TextBlock Text="{Binding SaveName}"
+                  Grid.Column="3"
+                  Foreground="White"
+                  FontSize="20"
+                  Margin="20,0"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"/>
+
+                </Grid>
+
+              </Border>
+              <!--#endregion-->
+
+              <!--#region Tile Matrix-->
+              <Grid x:Name="_gameTileTable" 
+              Opacity="0" Visibility="Collapsed">
+
+                <Image Source="../Sprites/Map.png" Margin="5"/>
+
+                <Border Background="Transparent"
+                BorderThickness="5"
+                Margin="0"
+                CornerRadius="5">
+                  <Border.BorderBrush>
+                    <LinearGradientBrush>
+                      <GradientStop Color="White" Offset="0.45"/>
+                      <GradientStop Color="Gray" Offset="0.5"/>
+                      <GradientStop Color="White" Offset="0.55"/>
+                    </LinearGradientBrush>
+                  </Border.BorderBrush>
+
+                  <ItemsControl x:Name="_matrix">
+                    <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                        <UniformGrid Columns="30" Rows="25"
+                                   Height="700" Width="840"/>
+                      </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+
+                        <kfctrl:Tile
+                        TileImageBuildingSource="{Binding TileImageBuildingSource}"
+                        TileImageOxygenSource="{Binding TileImageOxygenSource}"
+                        ZoneOpacity="{Binding Opacity}"
+                        ZoneColor="{Binding ZoneColor}"
+                        FilterColor="{Binding FilterColor}"
+                        Command="{Binding OnClick}"
+                        CommandParameter="{Binding Location}"
+                        IsMeteorFalling="{Binding IsMeteorFalling}"/>
+
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+
+                </Border>
+
+              </Grid>
+              <!--#endregion-->
+
+              <TextBlock x:Name="_loadingTitle"
+              Text="Loading..."
+              FontStyle="Italic"
+              Opacity="0"
+              Visibility="Collapsed"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              FontSize="40"/>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Save Panel-->
+            <Grid x:Name="_savePanel"
+            Visibility="Collapsed"
+            Background="Transparent"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="2">
+              <Border x:Name="_savePanelInner"
+              Opacity="0"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Padding="20"
+              CornerRadius="10"
+              MinWidth="400"
+              Background="#a000">
+
+                <Grid>
+
+                  <StackPanel>
+
+                    <TextBlock Text="Save Game"
+                    FontSize="30"
+                    Foreground="White"
+                    TextAlignment="Center"/>
+
+                    <TextBox Text="{Binding SaveName, Mode=TwoWay}"
+                    Background="#a000"
+                    BorderThickness="0"
+                    Margin="10" Padding="10, 0"
+                    FontSize="40"
+                    Foreground="White"
+                    TextAlignment="Center"
+                    MaxLength="25"
+                    x:Name="saveDialogText"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                      <StackPanel.Resources>
+                        <Style TargetType="kfctrl:MenuButton">
+                          <Setter Property="Margin" Value="10,0"/>
+                        </Style>
+                      </StackPanel.Resources>
+
+                      <kfctrl:MenuButton Label="Save Current" FontSize="20"
+                      Command="{Binding OverwriteSaveGameCommand}"
+                      CommandParameter="{Binding Text, ElementName=saveDialogText}"
+                      IsEnabled="{Binding IsSaved}"/>
+
+                      <kfctrl:MenuButton Label="New Save" FontSize="20"
+                      Command="{Binding SaveGameCommand}"
+                      CommandParameter="{Binding Text, ElementName=saveDialogText}"/>
+
+                    </StackPanel>
+
+                  </StackPanel>
+
+                  <kfctrl:MenuButtonImage  ImageSource="../Resources/b_quit.png"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Right"
+                  Margin="-25"
+                  Click="HideSaveMenuClick"
+                  Command="{Binding SaveMenuClosed}"/>
+
+                </Grid>
+
+              </Border>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Finances Panel-->
+            <Grid x:Name="_financesPanel"
+                Visibility="Collapsed"
+                Background="Transparent"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2"
+                Margin="0,30,0,0">
+              <Border x:Name="_financesPanelInner"
+              Opacity="0"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Padding="20"
+              CornerRadius="10"
+              MinWidth="400"
+              Background="#a000">
+
+                <Grid>
+
+                  <StackPanel>
+
+                    <TextBlock 
+                    Text="Finances"
+                    FontSize="30"
+                    TextDecorations="Underline"
+                    Foreground="White"
+                    TextAlignment="Center"/>
+
+                    <!--#region Chart-->
+                    <Border CornerRadius="15"
+                          Margin="0,20"
+                          Height="300"
+                          Width="600"
+                          Background="Transparent"
+                          BorderBrush="LightGray"
+                          BorderThickness="3">
+                      <Grid>
+                        <Grid.Resources>
+                          <Style x:Key="CleanSeparator" TargetType="lvc:Separator">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
+                          </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                          <RowDefinition Height="Auto"></RowDefinition>
+                          <RowDefinition Height="3*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"></ColumnDefinition>
+                          <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <lvc:CartesianChart Grid.Row="2" Grid.Column="1">
+                          <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Foreground="Red" Title="Population" Position="RightTop" ShowLabels="False">
+                              <lvc:Axis.Separator>
+                                <lvc:Separator Style="{StaticResource CleanSeparator}"></lvc:Separator>
+                              </lvc:Axis.Separator>
+                            </lvc:Axis>
+                          </lvc:CartesianChart.AxisY>
+                          <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False">
+                              <lvc:Axis.Separator>
+                                <lvc:Separator IsEnabled="False"></lvc:Separator>
+                              </lvc:Axis.Separator>
+                            </lvc:Axis>
+                          </lvc:CartesianChart.AxisX>
+                          <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Values="{Binding PeopleTimeSeries}"  ScalesYAt="0" Stroke="Red" Fill="Transparent"/>
+                            <!-- itt egy binding a values ra-->
+                            <!--Scales at population, Axis[1]-->
+                          </lvc:CartesianChart.Series>
+                        </lvc:CartesianChart>
+                        <lvc:CartesianChart Grid.Row="2" Grid.Column="0">
+                          <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Foreground="Green" Title="Money" ShowLabels="False">
+                              <lvc:Axis.Separator>
+                                <lvc:Separator Style="{StaticResource CleanSeparator}"></lvc:Separator>
+                              </lvc:Axis.Separator>
+                            </lvc:Axis>
+                          </lvc:CartesianChart.AxisY>
+                          <lvc:CartesianChart.AxisX>
+                            <lvc:Axis ShowLabels="False">
+                              <lvc:Axis.Separator>
+                                <lvc:Separator IsEnabled="False"></lvc:Separator>
+                              </lvc:Axis.Separator>
+                            </lvc:Axis>
+                          </lvc:CartesianChart.AxisX>
+                          <lvc:CartesianChart.Series>
+                            <lvc:LineSeries Values="{Binding MoneyTimeSeries}" ScalesYAt="0" Stroke="Green" Fill="Transparent"/>
+                            <!-- itt egy binding a values ra-->
+                            <!--Scales at money, Axis[0]-->
+                          </lvc:CartesianChart.Series>
+                        </lvc:CartesianChart>
+                      </Grid>
+                    </Border>
+                    <!--#endregion-->
+
+                    <ScrollViewer MaxHeight="250" Margin="30,0" 
+                    VerticalScrollBarVisibility="Hidden" >
+                      <StackPanel>
+
+                        <ItemsControl ItemsSource="{Binding Finances}">
+
+                          <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                              <StackPanel>
+                                <StackPanel.Resources>
+                                  <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="LightGray"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                  </Style>
+                                </StackPanel.Resources>
+                              </StackPanel>
+                            </ItemsPanelTemplate>
+                          </ItemsControl.ItemsPanel>
+
+                          <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                              <kfctrl:FinanceData FinanceName="{Binding Message}" 
+                                                FinanceCost="{Binding Amount}" 
+                                                FinanceTime="{Binding Time}"/>
+                            </DataTemplate>
+                          </ItemsControl.ItemTemplate>
+
+                        </ItemsControl>
+                      </StackPanel>
+                    </ScrollViewer>
+
+                  </StackPanel>
+
+                  <kfctrl:MenuButtonImage  
+                  ImageSource="../Resources/b_quit.png"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Right"
+                  Margin="-25"
+                  Width="40"
+                  Height="40"
+                  Click="HideFinancesMenuClick"/>
+
+                </Grid>
+
+              </Border>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region GameOver Panel-->
+            <Grid x:Name="_gameOverPanel"
+            Background="Transparent"
+            Visibility="Collapsed"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="2">
+              <Border x:Name="_gameOverPanelInner"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Opacity="0"
+              Padding="20"
+              CornerRadius="10"
+              MinWidth="400"
+              Background="#a000">
+
+                <Grid>
+
+                  <StackPanel>
+                    <TextBlock Text="Game Over!"
+                    FontSize="30"
+                    Foreground="Orange"
+                    TextAlignment="Center"
+                    Margin="0,0,0,10"/>
+
+                    <Grid Margin="40,0">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                      </Grid.RowDefinitions>
+
+
+                      <TextBlock Text="GameTime:"
+                      FontSize="20"
+                      Foreground="LightGray"
+                      TextAlignment="Left"/>
+
+                      <TextBlock Text="Population:"
+                      Grid.Row="1"
+                      FontSize="20"
+                      Foreground="LightGray"
+                      TextAlignment="Left"/>
+
+                      <TextBlock Text="{Binding Date}"
+                      Grid.Column="1"
+                      FontSize="20"
+                      Foreground="LightGray"
+                      TextAlignment="Right"/>
+
+                      <TextBlock Text="{Binding Population}"
+                      Grid.Row="1"
+                      Grid.Column="1"
+                      FontSize="20"
+                      Foreground="LightGray"
+                      TextAlignment="Right"/>
+
+                    </Grid>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    Margin="0,30,0,0">
+                      <StackPanel.Resources>
+                        <Style TargetType="kfctrl:MenuButton">
+                          <Setter Property="Margin" Value="10,0"/>
+                        </Style>
+                      </StackPanel.Resources>
+
+                      <kfctrl:MenuButtonRed Label="Exit to Menu" FontSize="20"
+                      Click="LeaveGame"/>
+
+                    </StackPanel>
+
+
+                  </StackPanel>
+                </Grid>
+
+              </Border>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Help Panel-->
+            <Grid x:Name="_helpPanel"
+            Background="Transparent"
+            Visibility="Collapsed"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="2">
+
+              <Border x:Name="_helpPanelInner"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Opacity="0"
+              Padding="10, 20, 10, 20"
+              CornerRadius="7"
+              MinWidth="400"
+              Background="#a000"
+              Margin="0,30,0,0">
+
+                <Grid>
+                  <ScrollViewer MaxHeight="670"
+                  VerticalScrollBarVisibility="Hidden">
+                    <kfctrl:HelpInfo Width="830"/>
+                  </ScrollViewer>
+                  <kfctrl:MenuButtonImage ImageSource="../Resources/b_quit.png"
+                  Command="{Binding HelpMenuClosedCommand}"
+                  Height="40"
+                  Width="40"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Right"
+                  Margin="-20, -30"
+                  Click="HideHelp"/>
+                </Grid>
+
+              </Border>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region Popup Message-->
+            <kfctrl:PopUp x:Name="_popup"
+            Visibility="Collapsed"
+            Opacity="0"
+            Margin="15,50"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Grid.Column="1"
+            Grid.RowSpan="2"
+            PopUpMessage="{Binding PopUpMessage}"
+            PopUpTextColor="{Binding PopUpTextColor}"
+            Click="HidePopUpClick"/>
+            <!--#endregion-->
+
+          </Grid>
+          <!--#endregion-->
+
+        </Grid>
+
+      </Border>
+
+    </Border>
+  </Viewbox>
+
+</Window>

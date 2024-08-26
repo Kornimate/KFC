@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="KFC.Persistence.GameInfo">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAIBEEAQAAgIQQAACBAAAAUAAAAEAAAAAgAAAAAAkBA=</HashCode>
+      <FileName>GameInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.Persistence.GameLoadException">
+    <Position X="3.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>GameLoadException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.Persistence.GamePersistence">
+    <Position X="7" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAQAAAAAAAEACAAAAAIAEAAAIAAAAAAAIA=</HashCode>
+      <FileName>GamePersistence.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.Persistence.GameSaveException">
+    <Position X="0.5" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>GameSaveException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.Persistence.PersistenceGameInfo">
+    <Position X="3.75" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IQIBEEAQCAgIQQAACBEAAAUAAAAEAAAAAgAAAAACkBA=</HashCode>
+      <FileName>PersistenceGameInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.Persistence.SaveInfo">
+    <Position X="7.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SaveInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

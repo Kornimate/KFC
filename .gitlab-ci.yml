@@ -1,0 +1,67 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - build
+  - test
+  - deploy
+  - upload
+
+build:
+  stage: build
+  script:
+    - echo "Build started!"
+    - dotnet build
+    - echo "Build successful!"
+
+test:
+  stage: test
+  script:
+    - 'dotnet test --collect:"XPlat Code Coverage" -r cobertura'
+    - 'dotnet test --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
+    - grep -rhoP "coverage line-rate=\"\K.\....." | awk '{print "Code coverage = "substr($1,3,2)"."substr($1,5,2)"% of lines covered"}'
+  coverage: '/Code coverage = \d+\.\d+/'
+  artifacts:
+    paths:
+      - ./**/*test-result.xml
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: cobertura/*/coverage.cobertura.xml
+      junit:
+        - ./**/*test-result.xml
+    expire_in: 30 days
+  dependencies:
+    - build
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploy started!"
+    - dotnet publish /p:PublishProfile=ReleaseProfile.pubxml -o releasebinaries
+    - echo "Finished deploying"
+  rules:
+    - if: '$CI_COMMIT_TAG && $CI_COMMIT_TAG =~ /^v.*$/'
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+  artifacts:
+    paths:
+      - releasebinaries
+    expire_in: 1 days
+  dependencies:
+    - build
+    - test
+
+upload_binaries:
+  stage: upload
+  image: ubuntu:20.04
+  rules:
+    - if: '$CI_COMMIT_TAG && $CI_COMMIT_TAG =~ /^v.*$/'
+  variables:
+    PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/windows-release/$CI_COMMIT_TAG"
+  before_script:
+    - apt-get update -y
+    - apt-get install -y zip curl
+  script:
+    - zip -r releasebinaries.zip releasebinaries/
+    - |
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file releasebinaries.zip "${PACKAGE_REGISTRY_URL}/windows-release-$CI_COMMIT_TAG.zip"

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="KFC.ViewModel.CollectionIterator">
+    <Position X="6.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>CollectionIterator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.ViewModel.DelegateCommand" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DelegateCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KFC.ViewModel.FinanceMenuItem">
+    <Position X="1.75" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAIAAAAQA=</HashCode>
+      <FileName>FinanceMenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.ViewModel.GameViewModelKFC">
+    <Position X="9.5" Y="3" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="KFC.ViewModel.GameViewModelKFC.MapModes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GameViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="KFC.ViewModel.GameViewModelKFC.GameModes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>GameViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>HvYSppP8IVm/UmntOnZL9qbfxStjfaqx0k7JdiNa8G0=</HashCode>
+      <FileName>GameViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="onetime" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="TileMatrix" />
+      <Property Name="Saves" />
+      <Property Name="Packets" />
+      <Property Name="HeatMaps" />
+      <Property Name="Finances" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="KFC.ViewModel.OneShot">
+    <Position X="6.5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>OneShot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.ViewModel.Packet">
+    <Position X="1.25" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAEAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Packet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.ViewModel.ViewModelBase">
+    <Position X="4.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KFC.ViewModel.ViewModelHeatMap">
+    <Position X="1.25" Y="6.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModelHeatMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.ViewModel.ViewModelSavedGame">
+    <Position X="1.25" Y="8.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAABAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>ViewModelSavedGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KFC.ViewModel.ViewModelTile">
+    <Position X="1.25" Y="13.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>MBEAEBDAgSggwAAIIHIAACASBEEAIAABABAIQCIBgBA=</HashCode>
+      <FileName>ViewModelTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
